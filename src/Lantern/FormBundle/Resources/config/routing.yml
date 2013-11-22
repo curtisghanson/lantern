@@ -1,0 +1,3 @@
+lantern_form_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: LanternFormBundle:Default:index }

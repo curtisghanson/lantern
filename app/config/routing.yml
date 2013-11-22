@@ -1,0 +1,34 @@
+# Lantern Application Core bundle
+LanternAppBundle:
+    resource: "@LanternAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# Lantern Dependency Bundles
+LanternAuthBundle:
+    resource: "@LanternAuthBundle/Resources/config/routing.yml"
+    prefix:   /auth
+
+LanternFileMgrBundle:
+    resource: "@LanternFileMgrBundle/Resources/config/routing.yml"
+    prefix:   /filemgr
+
+LanternFormBundle:
+    resource: "@LanternFormBundle/Resources/config/routing.yml"
+    prefix:   /form
+
+LanternIntlBundle:
+    resource: "@LanternIntlBundle/Resources/config/routing.yml"
+    prefix:   /intl
+
+LanternMediaParserBundle:
+    resource: "@LanternMediaParserBundle/Resources/config/routing.yml"
+    prefix:   /mediaparse
+
+LanternTwigExtBundle:
+    resource: "@LanternTwigExtBundle/Resources/config/routing.yml"
+    prefix:   /twigext
+
+# Lantern Theme Bundles
+LanternThemeModernThemeBundle:
+    resource: "@LanternThemeModernThemeBundle/Resources/config/routing.yml"
+    prefix:   /moderntheme

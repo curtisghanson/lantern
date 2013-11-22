@@ -1,0 +1,7 @@
+parameters:
+#    lantern_form.example.class: Lantern\FormBundle\Example
+
+services:
+#    lantern_form.example:
+#        class: %lantern_form.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

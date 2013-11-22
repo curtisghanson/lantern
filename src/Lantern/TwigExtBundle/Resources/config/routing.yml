@@ -1,0 +1,3 @@
+lantern_twig_ext_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: LanternTwigExtBundle:Default:index }

@@ -1,0 +1,3 @@
+lantern_intl_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: LanternIntlBundle:Default:index }

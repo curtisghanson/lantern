@@ -1,0 +1,7 @@
+parameters:
+#    lantern_media_parser.example.class: Lantern\MediaParserBundle\Example
+
+services:
+#    lantern_media_parser.example:
+#        class: %lantern_media_parser.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

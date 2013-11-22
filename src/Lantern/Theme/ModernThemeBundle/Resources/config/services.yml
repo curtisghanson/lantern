@@ -1,0 +1,7 @@
+parameters:
+#    lantern_theme_modern_theme.example.class: Lantern\Theme\ModernThemeBundle\Example
+
+services:
+#    lantern_theme_modern_theme.example:
+#        class: %lantern_theme_modern_theme.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

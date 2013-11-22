@@ -1,0 +1,7 @@
+parameters:
+#    lantern_app.example.class: Lantern\AppBundle\Example
+
+services:
+#    lantern_app.example:
+#        class: %lantern_app.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    {% block html %}
+
+        <head>
+            {% block head %}
+
+                {% block meta %}
+                {% endblock meta %}
+
+                <title>
+                    {% block title %}
+                    {% endblock title %}
+                </title>
+
+                {% block less %}
+                {% endblock less %}
+
+                {% block stylesheets %}
+                {% endblock stylesheets %}
+
+                {% block icons %}
+                {% endblock icons %}
+
+                {% block sitemap %}
+                {% endblock sitemap %}
+
+                {% block shiv %}
+                {% endblock shiv %}
+
+            {% endblock head %}
+        </head>
+
+        <body>
+            <!--[if lt IE 7]>
+                <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+            <![endif]-->
+            {% block body %}
+
+                <header>
+                    {% block header %}
+
+                        <nav class="nav-bar">
+                            {% block navBar %}
+
+                                <ul class="nav-left">
+                                    {% block navBarLeft %}
+                                    {% endblock navBarLeft %}
+                                </ul>
+
+                                <ul class="nav-right">
+                                    {% block navBarRight %}
+                                    {% endblock navBarRight %}
+                                </ul>
+
+                            {% endblock navBar %}
+                        </nav>
+
+                    {% endblock header %}
+                </header>
+
+                <div class="wrapper">
+                    {% block wrapper %}
+
+                        <aside class="sidebar">
+                            {% block sidebar %}
+                            {% endblock sidebar %}
+
+                            {% block sidebarControl %}
+                            {% endblock sidebarControl %}
+                        </aside>
+
+                        <section class="content">
+                            {% block content %}
+                            {% endblock content %}
+                        </section>
+
+                    {% endblock wrapper %}
+                </div>
+                            
+                <footer>
+                    {% block footer %}
+                    {% endblock footer %}
+                </footer>
+
+                {% block javascripts %}
+                {% endblock javascripts %}
+
+                {% block analytics %}
+                {% endblock analytics %}
+
+            {% endblock body %}
+        </body>
+
+    {% endblock html %}
+</html>

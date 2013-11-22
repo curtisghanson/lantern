@@ -1,0 +1,235 @@
+html, body {
+    margin:      0;
+    padding:     0;
+    height:   100%;
+    background-color: #efefef;
+    font-family: "GeosansLight", Helvetica, Arial, san-serif;
+    color: #333333;
+}
+
+.navbar-nav > li > a.navbar-avatar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-avatar img {
+    border-radius: 20px;
+}
+
+.navbar .form-control {
+    height: 100%;
+}
+
+.sidebar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    -webkit-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 2px 0 10px 0 rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px 0 rgba(0,0,0,0.1);
+}
+
+.drag-bar {
+   position: fixed;
+   left:     240px;
+   top:       50px;
+   bottom:    50px;
+   width:      3px;
+-webkit-transition: background-color .3s ease-in, box-shadow .3s ease-in;
+   -moz-transition: background-color .3s ease-in, box-shadow .3s ease-in;
+     -o-transition: background-color .3s ease-in, box-shadow .3s ease-in;
+        transition: background-color .3s ease-in, box-shadow .3s ease-in;
+}
+
+.drag-bar:hover,
+.drag-bar:active,
+.drag-bar:focus {
+    cursor:        col-resize;
+    background-color: #bbddff;
+    -webkit-box-shadow: 0 0 12px 2px rgba(187,221,255,0.5);
+    -moz-box-shadow:    0 0 12px 2px rgba(187,221,255,0.5);
+    box-shadow:         0 0 12px 2px rgba(187,221,255,0.5);
+}
+
+.drag-bar-handle {
+    position: absolute;
+    top: 50%;
+    height: 21px;
+    width: 9px;
+    background-color: #bbddff;
+    left: -3px;
+    border-radius: 3px;
+}
+
+.drag-bar-handle .dot:after {
+    content: "·";
+    color: #ffffff;
+    font-weight: 900;
+    text-align: center;
+    line-height: 10px;
+    height: 5px;
+    display: block;
+}
+
+/* Body Styles */
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('../font/geosanslight/geosanslight-webfont.eot?v=3.2.1');
+  src: url('../font/geosanslight/geosanslight-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
+       url('../font/geosanslight/geosanslight-webfont.woff?v=3.2.1') format('woff'),
+       url('../font/geosanslight/geosanslight-webfont.ttf?v=3.2.1') format('truetype'),
+       url('../font/geosanslight/geosanslight-webfont.svg#geosanslightregular?v=3.2.1') format('svg');
+  font-weight: normal;
+  font-style:  normal;
+}
+
+body {
+    height:          100%;
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction:    column;
+    -ms-flex-direction:     column;
+    flex-direction:         column;
+}
+
+header  { background: #000000; } /* #E6546B old */
+section { background: #FFE792; }
+footer  { background: #000000; } /* #8ACBB5 old */
+
+header,
+footer {
+    height: 40px;
+    -webkit-flex: 0 0 auto;
+    -moz-flex:    0 0 auto;
+    -ms-flex:     0 0 auto;
+    flex:         0 0 auto;
+}
+
+.wrapper {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex: 1 1 auto;
+    -moz-flex:    1 1 auto;
+    -ms-flex:     1 1 auto;
+    flex:         1 1 auto;
+}
+
+.content {
+    overflow:   hidden;
+    overflow-y:   auto;
+    -webkit-flex: 1 1 auto;
+    -moz-flex:    1 1 auto;
+    -ms-flex:     1 1 auto;
+    flex:         1 1 auto;
+}
+
+aside  { width:   15%; }
+
+nav.nav-bar {
+    display:                  -webkit-flex;
+    -webkit-justify-content: space-between;
+}
+
+nav.nav-bar li {
+    position: relative;
+}
+
+nav.nav-bar li ul {
+    position: absolute;
+}
+
+nav.nav-bar a {
+    display:       -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: space-between;
+    color:              #FFFFFF;
+    text-decoration:       none;
+    padding:             0 10px;
+    height:                40px;
+    font-weight:         bolder;
+    font-size:           1.2rem;
+}
+
+nav.nav-bar ul li:hover,
+nav.nav-bar ul li:hover ul {
+    background-color: rgba(0,102,204,1);
+}
+
+nav.nav-bar ul.nav-left li:hover ul {
+    left:    0;
+    opacity: 1;
+}
+
+nav.nav-bar ul.nav-right li:hover ul {
+    right:   0;
+    opacity: 1;
+}
+
+nav.nav-bar ul ul li:hover {
+    background-color: rgba(0,132,209,1);
+}
+
+nav.nav-bar ul {
+    display: -webkit-flex;
+    list-style:      none;
+    margin:             0;
+    padding:            0;
+}
+
+nav.nav-bar ul.nav-left ul {
+    left: -9999px;
+    opacity:    0;
+    -webkit-flex-direction: column;
+}
+
+nav.nav-bar ul.nav-right ul {
+    right: 9999px;
+    opacity:    0;
+    -webkit-flex-direction: column;
+}
+
+nav.nav-bar ul ul li [class^="icon-"],
+nav.nav-bar ul ul li [class*=" icon-"] {
+    margin-right: 40px;
+}
+/*
+nav.nav-bar ul ul li .nav-item-icon,
+nav.nav-bar ul ul li .nav-item-icon {
+    margin-right: 40px;
+}
+*/
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+
+
+
+
+
+
