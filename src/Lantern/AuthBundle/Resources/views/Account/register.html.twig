@@ -1,0 +1,12 @@
+{# src/Lantern/AuthBundle/Resources/views/Account/register.html.twig #}
+{% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
+{% block content %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+
+{{ form_end(form) }}
+{% endblock content %}

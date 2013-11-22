@@ -1,3 +1,30 @@
+lantern_user:
+    resource: "@LanternUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+lantern_menu:
+    resource: "@LanternMenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    path:   /login
+    defaults:  { _controller: LanternAuthBundle:Security:login }
+
+login_check:
+    path:   /login_check
+    requirements: { _method: POST }
+
+logout:
+    path:   /logout
+
+account_register:
+    path:     /register
+    defaults: { _controller: LanternAuthBundle:Account:register }
+
+account_create:
+    path:     /register/create
+    defaults: { _controller: LanternAuthBundle:Account:create }
+
 # Lantern Application Core bundle
 LanternAppBundle:
     resource: "@LanternAppBundle/Resources/config/routing.yml"

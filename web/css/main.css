@@ -159,22 +159,22 @@ nav.nav-bar a {
     font-size:           1.2rem;
 }
 
-nav.nav-bar ul li:hover,
-nav.nav-bar ul li:hover ul {
+nav.nav-bar ul li:hover, /* hover on top-level li, highlight self blue */
+nav.nav-bar ul li:hover ul { /* also if submenu, highlight ul blue */
     background-color: rgba(0,102,204,1);
 }
 
-nav.nav-bar ul.nav-left li:hover ul {
+nav.nav-bar ul.nav-left li:hover ul { /* hover on top-level left li, bring ul into page */
     left:    0;
     opacity: 1;
 }
 
-nav.nav-bar ul.nav-right li:hover ul {
+nav.nav-bar ul.nav-right li:hover ul { /* hover on top-level right li, bring ul into page */
     right:   0;
     opacity: 1;
 }
 
-nav.nav-bar ul ul li:hover {
+nav.nav-bar ul ul li:hover { /* hover on sub-level li, highlight lt-blue */
     background-color: rgba(0,132,209,1);
 }
 

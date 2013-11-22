@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Lantern\IntlBundle\LanternIntlBundle(),
             new Lantern\FormBundle\LanternFormBundle(),
             new Lantern\MediaParserBundle\LanternMediaParserBundle(),
+            new Lantern\MenuBundle\LanternMenuBundle(),
+            new Lantern\UserBundle\LanternUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
