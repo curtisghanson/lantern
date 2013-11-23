@@ -130,7 +130,15 @@ footer {
     flex:         1 1 auto;
 }
 
-aside  { width:   240px; }
+.sidebar {
+    overflow:   hidden;
+    overflow-y:   auto;
+    width:   240px;
+    -webkit-flex: 1 0 auto;
+    -moz-flex:    1 0 auto;
+    -ms-flex:     1 0 auto;
+    flex:         1 0 auto;
+}
 
 nav.nav-bar {
     display:                  -webkit-flex;
