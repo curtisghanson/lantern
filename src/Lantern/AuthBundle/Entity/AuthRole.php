@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 /**
  * AuthRole
  */
-class AuthRole implements RoleInterface
+class AuthRole implements RoleInterface, \Serializable
 {
     /**
      * @var integer
@@ -57,6 +57,26 @@ class AuthRole implements RoleInterface
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+        ) = unserialize($serialized);
     }
 
     public function getRole()

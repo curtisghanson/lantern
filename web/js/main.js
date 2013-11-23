@@ -17,7 +17,6 @@ $('.drag-bar-handle').dblclick(function(e){
         xcoord = maximized;
     }
     $('.sidebar').css('width', xcoord);
-    $('.content').css('margin-left', xcoord);
     $('.drag-bar').css('left', xcoord);
 });
 $('.drag-bar').mousedown(function(e){
@@ -34,7 +33,6 @@ $('.drag-bar').mousedown(function(e){
             xccord = e.pageX - 1;
         }
         $('.sidebar').css('width', xcoord);
-        $('.content').css('margin-left', xcoord);
         $('.drag-bar').css('left', xcoord);
     });
 });

@@ -1,29 +1,22 @@
-lantern_user:
-    resource: "@LanternUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
-lantern_menu:
-    resource: "@LanternMenuBundle/Resources/config/routing.yml"
-    prefix:   /
-
+# Lentern Security Routes
 login:
-    path:   /login
-    defaults:  { _controller: LanternAuthBundle:Security:login }
+    path:     /login
+    defaults: { _controller: LanternAuthBundle:Security:login }
 
 login_check:
-    path:   /login_check
+    path:     /login_check
     requirements: { _method: POST }
 
 logout:
-    path:   /logout
+    path:     /logout
 
-account_register:
+register:
     path:     /register
-    defaults: { _controller: LanternAuthBundle:Account:register }
+    defaults: { _controller: LanternAuthBundle:Security:register }
 
-account_create:
-    path:     /register/create
-    defaults: { _controller: LanternAuthBundle:Account:create }
+create:
+    path:     /create
+    defaults: { _controller: LanternAuthBundle:Security:create }
 
 # Lantern Application Core bundle
 LanternAppBundle:
@@ -51,9 +44,17 @@ LanternMediaParserBundle:
     resource: "@LanternMediaParserBundle/Resources/config/routing.yml"
     prefix:   /mediaparse
 
+LanternMenuBundle:
+    resource: "@LanternMenuBundle/Resources/config/routing.yml"
+    prefix:   /menu
+
 LanternTwigExtBundle:
     resource: "@LanternTwigExtBundle/Resources/config/routing.yml"
     prefix:   /twigext
+
+LanternUserBundle:
+    resource: "@LanternUserBundle/Resources/config/routing.yml"
+    prefix:   /user
 
 # Lantern Theme Bundles
 LanternThemeModernThemeBundle:

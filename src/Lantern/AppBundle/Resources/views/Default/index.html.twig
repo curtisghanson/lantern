@@ -1,4 +1,59 @@
 {% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
 {% block content %}
-    this is the lantern home page
+    <div class="box-outer display-flex">
+        <div class="box-inner display-flex flex-none">
+            {% for i in 0..4 %}
+                <div class="box-item">
+                    <div class="box-item-img display-flex justify-content-center align-items-flex-end">
+                        <img src="{{ asset('ico/apple-touch-icon-144x144-precomposed.png') }}" />
+                    </div>
+                    <div class="box-item-title">
+                        <p>the title shows too much text</p>
+                    </div>
+                    <div class="box-item-detail">
+                        <p>the detail shows too much text</p>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-img display-flex justify-content-center align-items-flex-end">
+                        <img src="{{ asset('ico/apple-touch-icon-114x114-precomposed.png') }}" />
+                    </div>
+                    <div class="box-item-title">
+                        <p>the title shows too much text</p>
+                    </div>
+                    <div class="box-item-detail">
+                        <p>the detail shows too much text</p>
+                    </div>
+                </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="box-outer display-flex">
+        <div class="box-inner display-flex flex-none">
+            {% for i in 0..2 %}
+                <div class="box-item">
+                    <div class="box-item-img display-flex justify-content-center align-items-flex-end">
+                        <img src="{{ asset('ico/apple-touch-icon-144x144-precomposed.png') }}" />
+                    </div>
+                    <div class="box-item-title">
+                        <p>the title shows too much text</p>
+                    </div>
+                    <div class="box-item-detail">
+                        <p>the detail shows too much text</p>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <div class="box-item-img display-flex justify-content-center align-items-flex-end">
+                        <img src="{{ asset('ico/apple-touch-icon-114x114-precomposed.png') }}" />
+                    </div>
+                    <div class="box-item-title">
+                        <p>the title shows too much text</p>
+                    </div>
+                    <div class="box-item-detail">
+                        <p>the detail shows too much text</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

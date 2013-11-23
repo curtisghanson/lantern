@@ -1,12 +1,12 @@
 <?php
-// src/App/AuthenticationBundle/Form/Type/RegistrationType.php
+// src/App/AuthenticationBundle/Form/Type/RegisterType.php
 namespace Lantern\AuthBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class RegisterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -17,7 +17,6 @@ class RegistrationType extends AbstractType
            'second_name' => 'confirm',
            'type'        => 'password',
         ));
-        $builder->add('submit', 'submit');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -29,6 +28,6 @@ class RegistrationType extends AbstractType
 
     public function getName()
     {
-        return 'registration';
+        return 'register';
     }
 }

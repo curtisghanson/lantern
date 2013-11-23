@@ -1,3 +1,3 @@
-LanternAppBundle_home:
+LanternAppBundle_index:
     pattern:  /
     defaults: { _controller: LanternAppBundle:Default:index }

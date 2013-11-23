@@ -39,8 +39,8 @@
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/normalize.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/jquery-ui-1.10.3.custom.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/animate.css') }}" />
-    <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/fontawesome.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/geosanslight.css') }}" />
+    <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/fontawesome.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/meteocons.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/flex.css') }}" />
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/main.css') }}" />
@@ -65,36 +65,36 @@
     <li class="app-logo"><a href="#">lantern</a></li>
     <li><a href="#">watch</a>
         <ul>
-            <li><a href="#"><span class="nav-item-icon icon-film"></span>movies</a></li>
-            <li><a href="#"><span class="nav-item-icon icon-youtube-play"></span>tv</a></li>
-            <li><a href="#"><span class="nav-item-icon icon-rss"></span>vodcasts</a></li>
+            <li><a href="#"><span class="fa fa-film"></span>movies</a></li>
+            <li><a href="#"><span class="fa fa-youtube-play"></span>tv</a></li>
+            <li><a href="#"><span class="fa fa-rss"></span>vodcasts</a></li>
         </ul>
     </li>
     <li><a href="#">listen</a>
         <ul>
-            <li><a href="#"><span class="icon-headphones"></span>music</a></li>
-            <li><a href="#"><span class="icon-music"></span>classical</a></li>
-            <li><a href="#"><span class="icon-rss"></span>podcasts</a></li>
-            <li><a href="#"><span class="icon-book"></span>audiobooks</a></li>
+            <li><a href="#"><span class="fa fa-headphones"></span>music</a></li>
+            <li><a href="#"><span class="fa fa-music"></span>classical</a></li>
+            <li><a href="#"><span class="fa fa-rss"></span>podcasts</a></li>
+            <li><a href="#"><span class="fa fa-book"></span>audiobooks</a></li>
         </ul>
     </li>
     <li><a href="#">see</a>
         <ul>
-            <li><a href="#"><span class="icon-camera"></span>&nbsp;pictures</a></li>
-            <li><a href="#"><span class="icon-book"></span>&nbsp;ebooks</a></li>
+            <li><a href="#"><span class="fa fa-camera"></span>&nbsp;pictures</a></li>
+            <li><a href="#"><span class="fa fa-book"></span>&nbsp;ebooks</a></li>
         </ul>
     </li>
     <li><a href="#">play</a>
         <ul>
-            <li><a href="#"><span class="icon-gamepad"></span>&nbsp;games</a></li>
-            <li><a href="#"><span class="icon-puzzle-piece"></span>&nbsp;apps</a></li>
+            <li><a href="#"><span class="fa fa-gamepad"></span>&nbsp;games</a></li>
+            <li><a href="#"><span class="fa fa-puzzle-piece"></span>&nbsp;apps</a></li>
         </ul>
     </li>
     <li><a href="#">manage</a>
         <ul>
-            <li><a href="#"><span class="icon-cloud"></span>&nbsp;media</a></li>
-            <li><a href="#"><span class="icon-picture"></span>&nbsp;theme</a></li>
-            <li><a href="#"><span class="icon-dashboard"></span>&nbsp;system</a></li>
+            <li><a href="#"><span class="fa fa-cloud"></span>&nbsp;media</a></li>
+            <li><a href="#"><span class="fa fa-picture"></span>&nbsp;theme</a></li>
+            <li><a href="#"><span class="fa fa-dashboard"></span>&nbsp;system</a></li>
         </ul>
     </li>
 {% endblock navBarLeft %}
@@ -131,9 +131,9 @@
     </li>
     <li><a href="#">@username</a>
         <ul>
-            <li><a href="#"><span class="icon-user"></span>&nbsp;profile</a></li>
-            <li><a href="#"><span class="icon-gear"></span>&nbsp;settings</a></li>
-            <li><a href="#"><span class="icon-unlock"></span>&nbsp;logout</a></li>
+            <li><a href="#"><span class="fa fa-user"></span>&nbsp;profile</a></li>
+            <li><a href="#"><span class="fa fa-gear"></span>&nbsp;settings</a></li>
+            <li><a href="{{ path('logout') }}"><span class="fa fa-unlock"></span>&nbsp;logout</a></li>
         </ul>
     </li>
 {% endblock navBarRight %}
@@ -143,12 +143,10 @@
 {% endblock sidebar %}
 
 {% block sidebarControl %}
-    <div class="drag-bar">
-        <div class="drag-bar-handle">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
+    <div class="drag-bar-handle">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
 {% endblock sidebarControl %}
 

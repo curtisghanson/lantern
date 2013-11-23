@@ -14,7 +14,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -320,4 +320,5 @@ class AuthUser implements AdvancedUserInterface, \Serializable
     {
         return (string) $this->getUsername();
     }
+
 }
