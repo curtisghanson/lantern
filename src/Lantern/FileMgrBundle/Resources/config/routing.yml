@@ -1,3 +1,9 @@
 lantern_file_mgr_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: LanternFileMgrBundle:Default:index }
+
+get_dir:
+    path:     /{dir}
+    defaults: { _controller: LanternFileMgrBundle:Default:getDir }
+    requirements:
+        name: ".+"

@@ -1,157 +1,86 @@
 .height-full { height: 100%; }
 .width-full  { width:  100%; }
 
-/* display (container) */
-.display-flex {
+/* DISPLAY (applies to: container) */
+.flex {
     display: -webkit-flex;
     display:    -moz-flex;
     display:     -ms-flex;
     display:         flex;
 }
 
-.display-flex-inline {
+.flex .flex-inline {
     display: -webkit-inline-flex;
     display:    -moz-inline-flex;
     display:     -ms-inline-flex;
     display:         inline-flex;
 }
 
-/* flex-direction (container) */
-.flex-direction-row {
+/* FLEX-DIRECTION (applies to: container) */
+.row {
     -webkit-flex-direction: row;
     -moz-flex-direction:    row;
     -ms-flex-direction:     row;
     flex-direction:         row;
 }
 
-.flex-direction-row-reverse {
+.row-reverse {
     -webkit-flex-direction: row-reverse;
     -moz-flex-direction:    row-reverse;
     -ms-flex-direction:     row-reverse;
     flex-direction:         row-reverse;
 }
 
-.flex-direction-column {
+.column {
     -webkit-flex-direction: column;
     -moz-flex-direction:    column;
     -ms-flex-direction:     column;
     flex-direction:         column;
 }
 
-.flex-direction-column-reverse {
+.column-reverse {
     -webkit-flex-direction: column-reverse;
     -moz-flex-direction:    column-reverse;
     -ms-flex-direction:     column-reverse;
     flex-direction:         column-reverse;
 }
 
-/* flex-wrap (container) */
-.flex-wrap-nowrap {
+/* FLEX-WRAP (applies to: container) */
+.nowrap {
     -webkit-flex-wrap: nowrap;
     -moz-flex-wrap:    nowrap;
     -ms-flex-wrap:     nowrap;
     flex-wrap:         nowrap;
 }
 
-.flex-wrap-wrap {
+.wrap {
     -webkit-flex-wrap: wrap;
     -moz-flex-wrap:    wrap;
     -ms-flex-wrap:     wrap;
     flex-wrap:         wrap;
 }
 
-.flex-wrap-wrap-reverse {
+.wrap-reverse {
     -webkit-flex-wrap: wrap-reverse;
     -moz-flex-wrap:    wrap-reverse;
     -ms-flex-wrap:     wrap-reverse;
     flex-wrap:         wrap-reverse;
 }
 
+.row-nowrap
+.row-wrap
+.row-wrap-reverse
+.row-reverse-nowrap
+.row-reverse-wrap
+.row-reverse-wrap-reverse
+.column-nowrap
+.column-wrap
+.column-wrap-reverse
+.column-reverse-nowrap
+.column-reverse-wrap
+.column-reverse-wrap-reverse
+
 /* TBD: flex-flow  flex-direction | flex-wrap */
-.flex-flow-row-nowrap {
-    -webkit-flex-flow: row nowrap;
-    -moz-flex-flow:    row nowrap;
-    -ms-flex-flow:     row nowrap;
-    flex-flow:         row nowrap;
-}
-
-.flex-flow-row-wrap {
-    -webkit-flex-flow: row wrap;
-    -moz-flex-flow:    row wrap;
-    -ms-flex-flow:     row wrap;
-    flex-flow:         row wrap;
-}
-
-.flex-flow-row-wrap-reverse {
-    -webkit-flex-flow: row wrap-reverse;
-    -moz-flex-flow:    row wrap-reverse;
-    -ms-flex-flow:     row wrap-reverse;
-    flex-flow:         row wrap-reverse;
-}
-
-.flex-flow-row-reverse-nowrap {
-    -webkit-flex-flow: row-reverse nowrap;
-    -moz-flex-flow:    row-reverse nowrap;
-    -ms-flex-flow:     row-reverse nowrap;
-    flex-flow:         row-reverse nowrap;
-}
-
-.flex-flow-row-reverse-wrap {
-    -webkit-flex-flow: row-reverse wrap;
-    -moz-flex-flow:    row-reverse wrap;
-    -ms-flex-flow:     row-reverse wrap;
-    flex-flow:         row-reverse wrap;
-}
-
-.flex-flow-row-reverse-wrap-reverse {
-    -webkit-flex-flow: row-reverse wrap-reverse;
-    -moz-flex-flow:    row-reverse wrap-reverse;
-    -ms-flex-flow:     row-reverse wrap-reverse;
-    flex-flow:         row-reverse wrap-reverse;
-}
-
-.flex-flow-column-nowrap {
-    -webkit-flex-flow: column nowrap;
-    -moz-flex-flow:    column nowrap;
-    -ms-flex-flow:     column nowrap;
-    flex-flow:         column nowrap;
-}
-
-.flex-flow-column-wrap {
-    -webkit-flex-flow: column wrap;
-    -moz-flex-flow:    column wrap;
-    -ms-flex-flow:     column wrap;
-    flex-flow:         column wrap;
-}
-
-.flex-flow-column-wrap-reverse {
-    -webkit-flex-flow: column wrap-reverse;
-    -moz-flex-flow:    column wrap-reverse;
-    -ms-flex-flow:     column wrap-reverse;
-    flex-flow:         column wrap-reverse;
-}
-
-.flex-flow-column-reverse-nowrap {
-    -webkit-flex-flow: column-reverse nowrap;
-    -moz-flex-flow:    column-reverse nowrap;
-    -ms-flex-flow:     column-reverse nowrap;
-    flex-flow:         column-reverse nowrap;
-}
-
-.flex-flow-column-reverse-wrap {
-    -webkit-flex-flow: column-reverse wrap;
-    -moz-flex-flow:    column-reverse wrap;
-    -ms-flex-flow:     column-reverse wrap;
-    flex-flow:         column-reverse wrap;
-}
-
-.flex-flow-column-reverse-wrap-reverse {
-    -webkit-flex-flow: column-reverse wrap-reverse;
-    -moz-flex-flow:    column-reverse wrap-reverse;
-    -ms-flex-flow:     column-reverse wrap-reverse;
-    flex-flow:         column-reverse wrap-reverse;
-}
-
 
 /* order (container and item) */
 .order-first {
@@ -168,72 +97,156 @@
     order:         100;
 }
 
-/* justify-content (container) */
-.justify-content-flex-start {
+/**
+ * JUSTIFY-CONTENT (applies to: container)
+ * ***************************************
+ * Items are justified along the main-axis
+ * of the container, that is, how they are
+ * aligned horizontally
+ */
+
+ /**
+ * .left
+ * .----------------------------------------------.
+ * | .--------. .--------. .--------.             |
+ * | | item 1 | | item 2 | | item 3 |             |
+ * | `--------` `--------` `--------`             |
+ * `----------------------------------------------`
+ */
+.left {
     -webkit-justify-content: flex-start;
     -moz-justify-content:    flex-start;
     -ms-justify-content:     flex-start;
     justify-content:         flex-start;
 }
 
-.justify-content-flex-end {
+ /**
+ * .right
+ * .----------------------------------------------.
+ * |             .--------. .--------. .--------. |
+ * |             | item 1 | | item 2 | | item 3 | |
+ * |             `--------` `--------` `--------` |
+ * `----------------------------------------------`
+ */
+.right {
     -webkit-justify-content: flex-end;
     -moz-justify-content:    flex-end;
     -ms-justify-content:     flex-end;
     justify-content:         flex-end;
 }
 
-.justify-content-center {
+ /**
+ * .align-center
+ * .----------------------------------------------.
+ * |       .--------. .--------. .--------.       |
+ * |       | item 1 | | item 2 | | item 3 |       |
+ * |       `--------` `--------` `--------`       |
+ * `----------------------------------------------`
+ */
+.center {
     -webkit-justify-content: center;
     -moz-justify-content:    center;
     -ms-justify-content:     center;
     justify-content:         center;
 }
 
-.justify-content-space-between {
+ /**
+ * .space-between
+ * .----------------------------------------------.
+ * | .--------.       .--------.       .--------. |
+ * | | item 1 |       | item 2 |       | item 3 | |
+ * | `--------`       `--------`       `--------` |
+ * `----------------------------------------------`
+ */
+.space-between {
     -webkit-justify-content: space-between;
     -moz-justify-content:    space-between;
     -ms-justify-content:     space-between;
     justify-content:         space-between;
 }
 
-.justify-content-space-around {
+ /**
+ * .align-space-around
+ * .----------------------------------------------.
+ * |    .--------.    .--------.    .--------.    |
+ * |    | item 1 |    | item 2 |    | item 3 |    |
+ * |    `--------`    `--------`    `--------`    |
+ * `----------------------------------------------`
+ */
+.space-around {
     -webkit-justify-content: space-around;
     -moz-justify-content:    space-around;
     -ms-justify-content:     space-around;
     justify-content:         space-around;
 }
 
-/* align-items (container) */
-.align-items-stretch {
+/**
+ * ALIGN-ITEMS (applies to: container)
+ * ***************************************
+ * Iems are aligned along the cross-axis
+ * of the container, that is, how they are
+ * aligned vertically
+ */
+
+/**
+ * .stretch (default)
+ * .----------------------------------------------.
+ * | .--------. .--------. .--------.             |
+ * | |        | |        | |        |             |
+ * | | item 1 | | item 2 | | item 3 |             |
+ * | |        | |        | |        |             |
+ * | `--------` `--------` `--------`             |
+ * `----------------------------------------------`
+ */
+.stretch {
     -webkit-align-items: stretch;
     -moz-align-items:    stretch;
     -ms-align-items:     stretch;
     align-items:         stretch;
 }
 
-.align-items-flex-start {
+/**
+ * .top
+ * .----------------------------------------------.
+ * | .--------. .--------. .--------.             | <-- aligned this axis
+ * | |        | | item 2 | | item 3 |             |
+ * | | item 1 | `--------` |        |             |
+ * | |        |            `--------`             |
+ * | `--------`                                   |
+ * `----------------------------------------------`
+ */
+.top {
     -webkit-align-items: flex-start;
     -moz-align-items:    flex-start;
     -ms-align-items:     flex-start;
     align-items:         flex-start;
 }
 
-.align-items-flex-end {
+/**
+ * .align-bottom
+ * .----------------------------------------------.
+ * | .--------. .--------. .--------.             | <-- aligned this axis
+ * | |        | | item 2 | | item 3 |             |
+ * | | item 1 | `--------` |        |             |
+ * | |        |            `--------`             |
+ * | `--------`                                   |
+ * `----------------------------------------------`
+ */
+.bottom {
     -webkit-align-items: flex-end;
     -moz-align-items:    flex-end;
     -ms-align-items:     flex-end;
     align-items:         flex-end;
 }
 
-.align-items-center {
+.middle {
     -webkit-align-items: center;
     -moz-align-items:    center;
     -ms-align-items:     center;
     align-items:         center;
 }
 
-.align-items-baseline {
+.baseline {
     -webkit-align-items: baseline;
     -moz-align-items:    baseline;
     -ms-align-items:     baseline;
@@ -241,42 +254,42 @@
 }
 
 /* align-self (item) */
-.align-self-auto {
+.auto {
     -webkit-align-self: auto;
     -moz-align-self:    auto;
     -ms-align-self:     auto;
     align-self:         auto;
 }
 
-.align-self-flex-start {
+.top {
     -webkit-align-self: flex-start;
     -moz-align-self:    flex-start;
     -ms-align-self:     flex-start;
     align-self:         flex-start;
 }
 
-.align-self-flex-end {
+.bottom {
     -webkit-align-self: flex-end;
     -moz-align-self:    flex-end;
     -ms-align-self:     flex-end;
     align-self:         flex-end;
 }
 
-.align-self-center {
+.middle {
     -webkit-align-self: center;
     -moz-align-self:    center;
     -ms-align-self:     center;
     align-self:         center;
 }
 
-.align-self-baseline {
+.baseline {
     -webkit-align-self: baseline;
     -moz-align-self:    baseline;
     -ms-align-self:     baseline;
     align-self:         baseline;
 }
 
-.align-self-stretch {
+.stretch {
     -webkit-align-self: stretch;
     -moz-align-self:    stretch;
     -ms-align-self:     stretch;
@@ -284,42 +297,42 @@
 }
 
 /* align-content (multiline container) */
-.align-content-stretch {
+.multiline-stretch {
     -webkit-align-content: stretch;
     -moz-align-content:    stretch;
     -ms-align-content:     stretch;
     align-content:         stretch;
 }
 
-.align-content-flex-start {
+.multiline-top {
     -webkit-align-content: flex-start;
     -moz-align-content:    flex-start;
     -ms-align-content:     flex-start;
     align-content:         flex-start;
 }
 
-.align-content-flex-end {
+.multiline-bottom {
     -webkit-align-content: flex-end;
     -moz-align-content:    flex-end;
     -ms-align-content:     flex-end;
     align-content:         flex-end;
 }
 
-.align-content-center {
+.multiline-middle {
     -webkit-align-content: center;
     -moz-align-content:    center;
     -ms-align-content:     center;
     align-content:         center;
 }
 
-.align-content-space-between {
+.multiline-space-between {
     -webkit-align-content: space-between;
     -moz-align-content:    space-between;
     -ms-align-content:     space-between;
     align-content:         space-between;
 }
 
-.align-content-space-around {
+.multiline-space-around {
     -webkit-align-content: space-around;
     -moz-align-content:    space-around;
     -ms-align-content:     space-around;

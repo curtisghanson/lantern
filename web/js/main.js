@@ -127,3 +127,34 @@ $(document).ready(function(){
         }, false);
     }
 })();
+
+$('.ajaxRequest').click(function(e){
+    e.preventDefault();
+    var data = new Object();
+    data.name = 'Curtis';
+    ajax('somewhere', data, 'POST')
+        .done(function(response){
+            response = $.parseJSON(response);
+            if(response.code == 100){
+                $('.ajaxResponse').html(response.msg);
+            }
+    }).fail(function(){
+        $('.ajaxResponse').html(response.msg);
+    });
+});
+
+function ajax(route, data, method){
+    if(undefined == data){
+        data = new Object();
+    }
+    if(undefined == method || '' == method){
+        method = 'GET'
+    }
+    data.route = route;
+    return $.ajax({
+        type: method,
+        url: 'ajax',
+        data: data,
+        datatype: 'json'
+    });
+}

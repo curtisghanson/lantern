@@ -1,3 +1,11 @@
 LanternAppBundle_index:
     pattern:  /
     defaults: { _controller: LanternAppBundle:Default:index }
+
+ajax:
+    pattern:  /ajax
+    defaults: { _controller: LanternAppBundle:Ajax:ajax }
+
+ajax_test:
+    pattern:  /ajaxtest
+    defaults: { _controller: LanternAppBundle:Default:ajaxTest }

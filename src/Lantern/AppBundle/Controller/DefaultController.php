@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('LanternAppBundle:Default:index.html.twig', array());
     }
+
+    public function ajaxTestAction()
+    {
+        return $this->render('LanternAppBundle:Default:ajaxTest.html.twig', array());
+    }
 }

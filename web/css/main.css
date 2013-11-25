@@ -134,10 +134,10 @@ footer {
     overflow:   hidden;
     overflow-y:   auto;
     width:   240px;
-    -webkit-flex: 1 0 auto;
-    -moz-flex:    1 0 auto;
-    -ms-flex:     1 0 auto;
-    flex:         1 0 auto;
+    -webkit-flex: 0 0 auto;
+    -moz-flex:    0 0 auto;
+    -ms-flex:     0 0 auto;
+    flex:         0 0 auto;
 }
 
 nav.nav-bar {
@@ -210,6 +210,68 @@ nav.nav-bar ul ul li .fa {
     margin-right: 40px;
 }
 
+nav.nav-bar ul.nav-weather {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+nav.nav-bar ul.nav-weather li {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    position: relative;
+}
+
+nav.nav-bar ul.nav-weather li .nav-weather-title {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+nav.nav-bar ul.nav-weather li ul {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    position: relative;
+    margin-top: 20px;
+    align-items: center;
+}
+
+nav.nav-bar ul.nav-weather li ul li {
+    align-items: center;
+}
+
+.media-box {
+    margin:          10px;
+    padding:         10px;
+}
+
+.media-box-head {
+}
+
+.media-box-head h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.media-box-body-container {
+    overflow-x:      auto;
+}
+
+.media-box-body {
+}
+
+.media-item-container {
+}
+
+.media-item {
+    padding: 10px;
+    max-width: 144px;
+}
+
+.media-item:hover {
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
 .content .box-outer {
     margin: 10px;
     padding: 10px;
@@ -217,6 +279,7 @@ nav.nav-bar ul ul li .fa {
 }
 
 .content .box-inner {
+    position: relative;
 }
 
 .content .box-item {
@@ -244,6 +307,11 @@ nav.nav-bar ul ul li .fa {
 
 .content .box-item .box-item-title p {
     font-weight: bold;
+}
+
+.content .box-item:hover {
+    background-color: #ffffff;
+    padding: 20px;
 }
 
 /* Landscape phones and down */

@@ -1,0 +1,7 @@
+{% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
+{% block content %}
+    <p>below should return an ajax response:</p>
+    <input type="text" id="textQuery" name="textQuery" />
+    <a class="ajaxRequest" href="{{ path('ajax') }}">click me</a>
+    <div class="ajaxResponse"></div>
+{% endblock content %}
