@@ -128,6 +128,22 @@ $(document).ready(function(){
     }
 })();
 
+$('.startDirMgr').click(function(e){
+    e.preventDefault();
+    var data = new Object();
+    data.currentDir = '/var';
+    ajax('get_dir', data, 'GET')
+        .done(function(response){
+            response = $.parseJSON(response);
+            console.log(response);
+            if(response.code == 100){
+                $('.dirList').html(response.data);
+            }
+    }).fail(function(){
+        $('.dirList').html(response.data);
+    });
+});
+
 $('.ajaxRequest').click(function(e){
     e.preventDefault();
     var data = new Object();
@@ -136,10 +152,10 @@ $('.ajaxRequest').click(function(e){
         .done(function(response){
             response = $.parseJSON(response);
             if(response.code == 100){
-                $('.ajaxResponse').html(response.msg);
+                $('.ajaxResponse').html(response.data);
             }
     }).fail(function(){
-        $('.ajaxResponse').html(response.msg);
+        $('.ajaxResponse').html(response.data);
     });
 });
 
@@ -153,7 +169,7 @@ function ajax(route, data, method){
     data.route = route;
     return $.ajax({
         type: method,
-        url: 'ajax',
+        url: location.protocol + '//' + location.hostname + '/lantern/app_dev.php/ajax',
         data: data,
         datatype: 'json'
     });
