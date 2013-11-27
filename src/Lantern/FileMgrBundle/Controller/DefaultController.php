@@ -20,16 +20,10 @@ class DefaultController extends Controller
         $attributes = $this->get('request')->attributes->all();
         $data = $attributes['data']->all();
         $cwd = $data['currentDir'];
-        $finder = new Finder();
-        $finder->directories()->in($cwd);
-        $ls = array();
+        $cmd = 'ls -d ' . $cwd . '*';
+        $dirs = preg_split('/[\r\n]+/', shell_exec($cmd));
 
-        echo '<pre>';echo shell_exec('ls -al /');exit;
-        foreach ($finder as $file) {
-            // Print the absolute path
-            echo $file->getRealpath() . '<br />';
-        }
-        return new Response(json_encode($cwd));
+        return new Response(json_encode($dirs));
         //return $this->render('LanternFileMgrBundle:Default:index.html.twig', array());
     }
 }

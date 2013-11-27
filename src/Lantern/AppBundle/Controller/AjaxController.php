@@ -57,8 +57,8 @@ class AjaxController extends Controller
             'data'  => $request->query,
         ));
 
-        if ($isAjax) {
-            $response = array('code' => 100, 'data' => $response);
+        if($isAjax){
+            $response = array('code' => 100, 'data' => json_decode($response->getContent()));
             return new Response(json_encode($response));
         }
         $response = array('code' => 400, 'data' => 'error');

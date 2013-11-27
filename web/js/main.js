@@ -131,19 +131,44 @@ $(document).ready(function(){
 $('.startDirMgr').click(function(e){
     e.preventDefault();
     var data = new Object();
-    data.currentDir = '/var';
+    data.currentDir = '/';
     ajax('get_dir', data, 'GET')
         .done(function(response){
             response = $.parseJSON(response);
             console.log(response);
             if(response.code == 100){
-                $('.dirList').html(response.data);
+                var text;
+                for (var i = response.data.length - 1; i >= 0; i--) {
+                    text += response.data[i] + '<br />';
+                };
+                $('.dirList').html(text);
             }
     }).fail(function(){
         $('.dirList').html(response.data);
     });
 });
 
+$('.startDirMgr').click(function(e){
+    e.preventDefault();
+    var data = new Object();
+    data.currentDir = '/';
+    ajax('get_dir', data, 'GET')
+        .done(function(response){
+            response = $.parseJSON(response);
+            console.log(response);
+            if(response.code == 100){
+                var text;
+                for (var i = response.data.length - 1; i >= 0; i--) {
+                    text += response.data[i] + '<br />';
+                };
+                $('.dirList').html(text);
+            }
+    }).fail(function(){
+        $('.dirList').html(response.data);
+    });
+});
+
+/*
 $('.ajaxRequest').click(function(e){
     e.preventDefault();
     var data = new Object();
@@ -158,6 +183,7 @@ $('.ajaxRequest').click(function(e){
         $('.ajaxResponse').html(response.data);
     });
 });
+*/
 
 function ajax(route, data, method){
     if(undefined == data){
