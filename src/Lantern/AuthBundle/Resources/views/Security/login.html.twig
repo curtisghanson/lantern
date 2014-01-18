@@ -1,24 +1,34 @@
 {# src/Lantern/AuthBundle/Resources/views/Security/login.html.twig #}
-{% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
+{% extends 'LanternThemeModernThemeBundle::oneColFullWidth.html.twig' %}
 {% block content %}
-    {% if error %}
-        <div>{{ error.message }}</div>
-    {% endif %}
+    <div class="modal modal-dark">
+        <form action="{{ path('login_check') }}" method="post" role="form">
+            <div class="modal-heading">
+                <h1>login</h1>
+            </div>
+            <div class="modal-body">
+                {% if error %}
+                    <div class="modal-alert modal-alert-red">
+                        {{ error.message }}
+                    </div>
+                {% endif %}
 
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                <label for="username" class="flex-item">username</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="flex-item form-control" />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+                <label for="password" class="flex-item">password</label>
+                <input type="password" id="password" name="_password" class="flex-item form-control" />
 
-        {#
-            If you want to control the URL the user
-            is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
-
-        <button type="submit" name="login">login</button>
-        <a href="{{ path('register') }}">register</a>
-    </form>
+            </div>
+            <div class="modal-footer">
+                {#
+                    If you want to control the URL the user
+                    is redirected to on success (more details below)
+                    <input type="hidden" name="_target_path" value="/account" />
+                #}
+                <button type="submit" name="login">login</button>
+                <a href="{{ path('register') }}">register</a>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

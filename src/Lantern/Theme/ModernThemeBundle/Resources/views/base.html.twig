@@ -3,6 +3,13 @@
     <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
     <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
     <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <!--[if gte IE 9]>
+        <style type="text/css">
+            .gradient {
+                filter: none;
+            }
+        </style>
+    <![endif]-->
     {% block html %}
 
         <head>
@@ -34,7 +41,24 @@
             {% endblock head %}
         </head>
 
-        <body>
+        {% set bgs = {
+            'andromeda galaxy':        '/lantern/img/space/andromeda-galaxy-1920x1080.jpg',
+            'bull nebula':             '/lantern/img/space/bull-nebula-1920x1080.jpg',
+            'fanart aurora borealis':  '/lantern/img/space/fanart-1-aurora-borealis-1920x1080.jpg',
+            'fanart andromeda galaxy': '/lantern/img/space/fanart-2-andromeda-galaxy-1920x1080.jpg',
+            'fanart 3':                '/lantern/img/space/fanart-3-unknown-1920x1080.jpg',
+            'fanart 4':                '/lantern/img/space/fanart-4-unknown-1920x1080.jpg',
+            'fanart 5':                '/lantern/img/space/fanart-5-unknown-1920x1080.jpg',
+            'fanart 6':                '/lantern/img/space/fanart-6-unknown-1920x1080.jpg',
+            'fanart 7':                '/lantern/img/space/fanart-7-unknown-1920x1080.jpg',
+            'fanart 8':                '/lantern/img/space/fanart-8-unknown-1920x1080.jpg',
+            'horsehead nebula':        '/lantern/img/space/horsehead-nebula-1920x1080.jpg',
+            'jet in carina':           '/lantern/img/space/jet-in-carina-1920x1080.jpg',
+            'pillars of creation':     '/lantern/img/space/pillars-of-creation-1920x1080.jpg',
+            'sombrero galaxy':         '/lantern/img/space/sombrero-galaxy-1920x1080.jpg'
+        } %}
+
+        <body class="gradient" style="background-image: url({{ asset(random(bgs)) }});">
             <!--[if lt IE 7]>
                 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
             <![endif]-->
