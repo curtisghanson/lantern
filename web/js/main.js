@@ -128,19 +128,21 @@ $(document).ready(function(){
     }
 })();
 
-$('.startDirMgr').click(function(e){
+$('.startDirMgr').on('click', function(e){
     e.preventDefault();
     var data = new Object();
     data.currentDir = '/';
+    $('.currentDir').val(data.currentDir);
     ajax('get_dir', data, 'GET')
         .done(function(response){
             response = $.parseJSON(response);
             console.log(response);
             if(response.code == 100){
-                var text;
-                for (var i = response.data.length - 1; i >= 0; i--) {
-                    text += response.data[i] + '<br />';
+                var text = '<ul>';
+                for (var i = 0; i < response.data.length; i++) {
+                    text += '<li class="viewDir" data-path="' + response.data[i]['path'] + '">' + response.data[i]['name'] + '</li>';
                 };
+                text += '</ul>'
                 $('.dirList').html(text);
             }
     }).fail(function(){
@@ -148,19 +150,21 @@ $('.startDirMgr').click(function(e){
     });
 });
 
-$('.startDirMgr').click(function(e){
+$('.dirList').on('click', '.viewDir', function(e){
     e.preventDefault();
     var data = new Object();
-    data.currentDir = '/';
+    data.currentDir = $(this).attr('data-path');
+    $('.currentDir').val(data.currentDir);
     ajax('get_dir', data, 'GET')
         .done(function(response){
             response = $.parseJSON(response);
             console.log(response);
             if(response.code == 100){
-                var text;
-                for (var i = response.data.length - 1; i >= 0; i--) {
-                    text += response.data[i] + '<br />';
+                var text = '<ul>';
+                for (var i = 0; i < response.data.length; i++) {
+                    text += '<li class="viewDir" data-path="' + response.data[i]['path'] + '">' + response.data[i]['name'] + '</li>';
                 };
+                text += '</ul>'
                 $('.dirList').html(text);
             }
     }).fail(function(){

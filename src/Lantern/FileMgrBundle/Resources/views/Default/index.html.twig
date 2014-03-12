@@ -1,5 +1,44 @@
 {% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
 {% block content %}
-    <div class="startDirMgr">view dir</div>
-    <div class="dirList"></div>
+    <div class="panel panel-default">
+        <div class="panel-header">
+            <h1>Directory Browser</h1>
+        </div>
+        <div class="panel-body">
+            <div class="startDirMgr">view dir</div>
+            <input type="text" class="currentDir" />
+            <div class="dirList"></div>
+            <div>
+                <ol>
+                    <li>navigate to point</li>
+                    <li>select directory</li>
+                    <li>what kind of media is this?
+                        <ul>
+                            <li>music</li>
+                            <li>classical music</li>
+                            <li>videogame music</li>
+                            <li>audiobook</li>
+                            <li>radio show, podcast, sound clip</li>
+                            <li>movie</li>
+                            <li>tv</li>
+                            <li>video short, vodcast, video clip</li>
+                            <li>ebook</li>
+                            <li>ezine, journal</li>
+                            <li>technical book, textbook</li>
+                            <li>pamphlet, document</li>
+                            <li>photo</li>
+                            <li>picture, image</li>
+                            <li>app, videogame</li>
+                        </ul>
+                    </li>
+                    <li>how is this media organized currently?</li>
+                    <li>ignore certain filetypes?</li>
+                    <li>perform cleanup on dirs?</li>
+                    <li>would you like it organized differently?</li>
+                    <li>schedule scans? (or scan after adding)</li>
+                    <li>ok, add this directory</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
