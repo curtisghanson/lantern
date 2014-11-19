@@ -1,3 +1,15 @@
 LanternAuthBundle_index:
     pattern:  /
     defaults: { _controller: LanternAuthBundle:Default:index }
+
+LanternAuthBundle_user:
+    resource: "@LanternAuthBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+LanternAuthBundle_group:
+    resource: "@LanternAuthBundle/Resources/config/routing/group.yml"
+    prefix:   /group
+
+LanternAuthBundle_role:
+    resource: "@LanternAuthBundle/Resources/config/routing/role.yml"
+    prefix:   /role

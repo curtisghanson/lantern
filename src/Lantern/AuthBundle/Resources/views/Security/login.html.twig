@@ -13,11 +13,15 @@
                     </div>
                 {% endif %}
 
-                <label for="username" class="flex-item">username</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" class="flex-item form-control" />
+                <div class="form-group">
+                    <label for="username" class="flex-item">username</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="flex-item form-control" tabindex="1" />
+                </div>
 
-                <label for="password" class="flex-item">password</label>
-                <input type="password" id="password" name="_password" class="flex-item form-control" />
+                <div class="form-group">
+                    <label for="password" class="flex-item">password</label>
+                    <input type="password" id="password" name="_password" class="flex-item form-control" tabindex="2" />
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -26,8 +30,8 @@
                     is redirected to on success (more details below)
                     <input type="hidden" name="_target_path" value="/account" />
                 #}
-                <button type="submit" name="login">login</button>
-                <a href="{{ path('register') }}">register</a>
+                <button type="submit" name="login" title="login" tabindex="3">login</button>
+                <a href="{{ path('register') }}" title="register" tabindex="4">register</a>
             </div>
         </form>
     </div>

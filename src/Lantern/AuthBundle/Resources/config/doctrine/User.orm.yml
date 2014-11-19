@@ -1,0 +1,74 @@
+Lantern\AuthBundle\Entity\User:
+    type:            entity
+    table:           lantern_user
+    repositoryClass: Lantern\AuthBundle\Entity\UserRepository
+    fields:
+        id:
+            type: integer
+            id:   true
+            generator:
+                strategy: AUTO
+        username:
+            column:   username
+            type:     string
+            length:   64
+            unique:   true
+            nullable: false
+        password:
+            column:   password
+            type:     string
+            length:   64
+            unique:   false
+            nullable: false
+        salt:
+            column:   salt
+            type:     string
+            length:   32
+            unique:   false
+            nullable: false
+        email:
+            column:   email
+            type:     string
+            length:   64
+            unique:   true
+            nullable: false
+        lastLogin:
+            column:   last_login
+            type:     datetime
+            unique:   false
+            nullable: true
+        isActive:
+            column:   is_active
+            type:     boolean
+            unique:   false
+            nullable: true
+        isLocked:
+            column:   is_locked
+            type:     boolean
+            unique:   false
+            nullable: true
+    manyToMany:
+        groups:
+            targetEntity: Group
+            inversedBy:   users
+            joinTable:
+                name: lantern_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+        roles:
+            targetEntity: Role
+            inversedBy:   users
+            joinTable:
+                name: lantern_user_role
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    role_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }

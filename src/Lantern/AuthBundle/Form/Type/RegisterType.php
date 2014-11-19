@@ -22,7 +22,7 @@ class RegisterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Lantern\AuthBundle\Entity\AuthUser'
+            'data_class' => 'Lantern\AuthBundle\Entity\User'
         ));
     }
 

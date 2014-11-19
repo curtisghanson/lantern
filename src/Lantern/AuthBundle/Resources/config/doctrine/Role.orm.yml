@@ -1,0 +1,48 @@
+Lantern\AuthBundle\Entity\Role:
+    type:            entity
+    table:           lantern_role
+    repositoryClass: Lantern\AuthBundle\Entity\RoleRepository
+    fields:
+        id:
+            type: integer
+            id:   true
+            generator:
+                strategy: AUTO
+        shortName:
+            column:   short_name
+            type:     string
+            length:   32
+            unique:   true
+            nullable: false
+        longName:
+            column:   long_name
+            type:     string
+            length:   64
+            unique:   false
+            nullable: true
+        description:
+            column:   description
+            type:     text
+            unique:   false
+            nullable: true
+        isActive:
+            column:   is_active
+            type:     boolean
+            unique:   false
+            nullable: true
+    oneToMany:
+        children:
+            targetEntity: Role
+            mappedBy:     parent
+    manyToOne:
+        parent:
+            targetEntity: Role
+            inversedBy:   children
+    manyToMany:
+        users:
+            targetEntity: User
+            mappedBy:     roles
+        groups:
+            targetEntity: Group
+            mappedBy:     roles
+    lifecycleCallbacks: {  }

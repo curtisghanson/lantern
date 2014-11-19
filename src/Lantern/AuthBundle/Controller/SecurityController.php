@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Lantern\AuthBundle\Entity\AuthUser;
+use Lantern\AuthBundle\Entity\User;
 use Lantern\AuthBundle\Form\Type\RegisterType;
 
 class SecurityController extends Controller
@@ -41,7 +41,7 @@ class SecurityController extends Controller
 
     public function registerAction()
     {
-        $user = new AuthUser();
+        $user = new User();
         $form = $this->createForm(new RegisterType(), $user, array(
             'action' => $this->generateUrl('create'),
         ));
@@ -57,7 +57,7 @@ class SecurityController extends Controller
         $factory = $this->get('security.encoder_factory');
         $em = $this->getDoctrine()->getEntityManager();
 
-        $form = $this->createForm(new RegisterType(), new AuthUser());
+        $form = $this->createForm(new RegisterType(), new User());
 
         $form->handleRequest($request);
 
@@ -68,7 +68,7 @@ class SecurityController extends Controller
             $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
             $user->setPassword($password);
             // all registered users get role_user by default
-            $role = $em->getRepository('LanternAuthBundle:AuthRole')->findOneByShortName('ROLE_USER');
+            $role = $em->getRepository('LanternAuthBundle:Role')->findOneByShortName('ROLE_USER');
             $user->addRole($role);
 
             $em->persist($user);
@@ -100,7 +100,7 @@ class SecurityController extends Controller
             $verifyExpiration->add(new \DateInterval('PT30M'));
 
             $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository('LanternAuthBundle:AuthUser')->findOneByEmail($email);
+            $user = $em->getRepository('LanternAuthBundle:User')->findOneByEmail($email);
 
             if (null != $user) {
                 $user->setVerification($verification);
@@ -108,7 +108,7 @@ class SecurityController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $body = $this->renderView('LanternAuthVundle:Security:resetEmail.html.twig', array(
+                $body = $this->renderView('LanternAuthBundle:Security:resetEmail.html.twig', array(
                     'verification' => $verification,
                     'email' => $user->getEmail(),
                     'sent' => $emailTime->format('g:ia'),
@@ -148,7 +148,7 @@ class SecurityController extends Controller
     public function verifyAction(Request $request, $email, $verification)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('LanternAuthBundle:AuthUser')->findOneByEmail($email);
+        $user = $em->getRepository('LanternAuthBundle:User')->findOneByEmail($email);
         if (($user->getVerification() === $verification) && ($user->getVerifyExpiration() > new \DateTime()))
         {
             $user->setVerifyExpiration(new \DateTime());

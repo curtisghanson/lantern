@@ -1,6 +1,7 @@
 # copy this file and rename to parameters.yml
 # be sure to fill in the necessary values for your installation
 parameters:
+    # database parameters
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
@@ -8,21 +9,38 @@ parameters:
     database_user:     root
     database_password: ~
 
+    # mailer parameters
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
 
+    # locale and csfr
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     # the following parameters should not be altered
     app_name:          lantern
-    app_description:   an open source web based media server
-    app_keywords:      lantern open source web application media server php javascript html5 css3
-    app_license:       gpl 3.0
+    app_description:   'an open source web based media server'
+    app_keywords:      'lantern open source web application media server php javascript html5 css3'
+    app_license:       'gpl 3.0'
     app_version:       1.0
     app_release:       0.0.1-alpha
     author_name:       curtis g hanson
     author_email:      curtisghanson@gmail.com
     author_site:       fartinginelevators.com
+
+    # the author of lantern
+    author_name:            'curtis g hanson'
+    author_email:           curtisghanson@gmail.com
+    author_site:            fartinginelevators.com
+    database_path:          null
+
+    # debug parameters
+    debug_toolbar:          true
+    debug_redirects:        false
+
+    # assetic parameters
+    use_assetic_controller: true
+    node_base_path:         /usr/local/bin/node
+    node_modules_path:      /usr/local/lib/node_modules

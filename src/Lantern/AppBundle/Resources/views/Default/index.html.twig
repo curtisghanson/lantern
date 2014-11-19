@@ -1,13 +1,59 @@
 {% extends 'LanternThemeModernThemeBundle::index.html.twig' %}
 {% block content %}
-    <div class="media-box display-flex flex-direction-column">
+<!--
+    <div class="widget display-flex flex-direction-column flex-wrap-nowrap">
+        <div class="widget-header">
+            <h1>title</h1>
+        </div>
+        <div class="widget-body">
+            <div class="media-group display-flex-inline">
+                <div class="media-item">
+                    <img class="media-img" src="http://placekitten.com/120/120"/>
+                    <div class="media-data">
+                        <h2 class="media-title">media title</h2>
+                        <p class="media-description">media desciption</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <img class="media-img" src="http://placekitten.com/120/60"/>
+                    <div class="media-data">
+                        <h2 class="media-title">media title</h2>
+                        <p class="media-description">media desciption</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <img class="media-img" src="http://placekitten.com/120/80"/>
+                    <div class="media-data">
+                        <h2 class="media-title">media title</h2>
+                        <p class="media-description">media desciption</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <img class="media-img" src="http://placekitten.com/120/120"/>
+                    <div class="media-data">
+                        <h2 class="media-title">media title</h2>
+                        <p class="media-description">media desciption</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <img class="media-img" src="http://placekitten.com/120/140"/>
+                    <div class="media-data">
+                        <h2 class="media-title">media title</h2>
+                        <p class="media-description">media desciption</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <div class="media-box display-flex flex-direction-column flex-wrap-nowrap">
         <div class="media-box-head">
             <h2>new movies</h2>
         </div>
-        <div class="media-box-body-container display-flex flex-wrap-nowrap">
-            <div class="media-box-body display-flex flex-none">
+        <div class="media-box-body-container">
+            <div class="media-box-body display-flex-inline">
                 {% for i in 0..4 %}
-                        <div class="media-item">
+                        <div class="media-item display-flex-inline flex-none flex-direction-column justify-content-end">
                             <div class="media-item-img">
                                 <img src="{{ asset('ico/apple-touch-icon-144x144-precomposed.png') }}" />
                             </div>
@@ -33,6 +79,7 @@
             </div>
         </div>
     </div>
+<!--
     <div class="box-outer display-flex">
         <div class="box-inner display-flex flex-none">
             {% for i in 0..4 %}
@@ -89,4 +136,5 @@
             {% endfor %}
         </div>
     </div>
+-->
 {% endblock content %}

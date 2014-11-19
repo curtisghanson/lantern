@@ -26,7 +26,7 @@ LanternAppBundle:
 # Lantern Dependency Bundles
 LanternAuthBundle:
     resource: "@LanternAuthBundle/Resources/config/routing.yml"
-    prefix:   /auth
+    prefix:   /
 
 LanternFileMgrBundle:
     resource: "@LanternFileMgrBundle/Resources/config/routing.yml"
@@ -55,6 +55,10 @@ LanternTwigExtBundle:
 LanternUserBundle:
     resource: "@LanternUserBundle/Resources/config/routing.yml"
     prefix:   /user
+
+LanternAdminBundle:
+    resource: "@LanternAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
 
 # Lantern Theme Bundles
 LanternThemeModernThemeBundle:

@@ -5,9 +5,16 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-web/uploads/*
 web/bundles/*
+web/css/*
+web/font/*
+web/ico/*
+web/img/*
+web/js/*
+web/less/*
+web/uploads/*
 *.php~
 
 # Configuration files
 app/config/parameters.yml
+/nbproject/private/

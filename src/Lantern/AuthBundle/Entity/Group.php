@@ -3,12 +3,11 @@
 namespace Lantern\AuthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
- * AuthRole
+ * Role
  */
-class AuthRole implements RoleInterface, \Serializable
+class Group implements \Serializable
 {
     /**
      * @var integer
@@ -41,7 +40,7 @@ class AuthRole implements RoleInterface, \Serializable
     private $children;
 
     /**
-     * @var \Lantern\AuthBundle\Entity\AuthRole
+     * @var \Lantern\AuthBundle\Entity\Group
      */
     private $parent;
 
@@ -51,12 +50,18 @@ class AuthRole implements RoleInterface, \Serializable
     private $users;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $roles;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users    = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles    = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -79,7 +84,8 @@ class AuthRole implements RoleInterface, \Serializable
         ) = unserialize($serialized);
     }
 
-    public function getRole()
+
+    public function getGroup()
     {
         return $this->getShortName();
     }
@@ -98,7 +104,7 @@ class AuthRole implements RoleInterface, \Serializable
      * Set shortName
      *
      * @param string $shortName
-     * @return AuthRole
+     * @return Group
      */
     public function setShortName($shortName)
     {
@@ -121,7 +127,7 @@ class AuthRole implements RoleInterface, \Serializable
      * Set longName
      *
      * @param string $longName
-     * @return AuthRole
+     * @return Group
      */
     public function setLongName($longName)
     {
@@ -144,7 +150,7 @@ class AuthRole implements RoleInterface, \Serializable
      * Set description
      *
      * @param string $description
-     * @return AuthRole
+     * @return Group
      */
     public function setDescription($description)
     {
@@ -167,7 +173,7 @@ class AuthRole implements RoleInterface, \Serializable
      * Set isActive
      *
      * @param boolean $isActive
-     * @return AuthRole
+     * @return Group
      */
     public function setIsActive($isActive)
     {
@@ -189,10 +195,10 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Add children
      *
-     * @param \Lantern\AuthBundle\Entity\AuthRole $children
-     * @return AuthRole
+     * @param \Lantern\AuthBundle\Entity\Group $children
+     * @return Group
      */
-    public function addChildren(\Lantern\AuthBundle\Entity\AuthRole $children)
+    public function addChildren(\Lantern\AuthBundle\Entity\Group $children)
     {
         $this->children[] = $children;
     
@@ -202,9 +208,9 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Remove children
      *
-     * @param \Lantern\AuthBundle\Entity\AuthRole $children
+     * @param \Lantern\AuthBundle\Entity\Group $children
      */
-    public function removeChildren(\Lantern\AuthBundle\Entity\AuthRole $children)
+    public function removeChildren(\Lantern\AuthBundle\Entity\Group $children)
     {
         $this->children->removeElement($children);
     }
@@ -222,10 +228,10 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Set parent
      *
-     * @param \Lantern\AuthBundle\Entity\AuthRole $parent
-     * @return AuthRole
+     * @param \Lantern\AuthBundle\Entity\Group $parent
+     * @return Group
      */
-    public function setParent(\Lantern\AuthBundle\Entity\AuthRole $parent = null)
+    public function setParent(\Lantern\AuthBundle\Entity\Group $parent = null)
     {
         $this->parent = $parent;
     
@@ -235,7 +241,7 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Get parent
      *
-     * @return \Lantern\AuthBundle\Entity\AuthRole 
+     * @return \Lantern\AuthBundle\Entity\Group 
      */
     public function getParent()
     {
@@ -245,10 +251,10 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Add users
      *
-     * @param \Lantern\AuthBundle\Entity\AuthUser $users
-     * @return AuthRole
+     * @param \Lantern\AuthBundle\Entity\User $users
+     * @return Role
      */
-    public function addUser(\Lantern\AuthBundle\Entity\AuthUser $users)
+    public function addUser(\Lantern\AuthBundle\Entity\User $users)
     {
         $this->users[] = $users;
     
@@ -258,9 +264,9 @@ class AuthRole implements RoleInterface, \Serializable
     /**
      * Remove users
      *
-     * @param \Lantern\AuthBundle\Entity\AuthUser $users
+     * @param \Lantern\AuthBundle\Entity\User $users
      */
-    public function removeUser(\Lantern\AuthBundle\Entity\AuthUser $users)
+    public function removeUser(\Lantern\AuthBundle\Entity\User $users)
     {
         $this->users->removeElement($users);
     }
@@ -273,6 +279,37 @@ class AuthRole implements RoleInterface, \Serializable
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return $this->roles->toArray();
+    }
+
+    /**
+     * Add roles
+     *
+     * @param \Lantern\AuthBundle\Entity\Role $roles
+     * @return User
+     */
+    public function addRole(\Lantern\AuthBundle\Entity\Role $roles)
+    {
+        $this->roles[] = $roles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove roles
+     *
+     * @param \Lantern\AuthBundle\Entity\Role $roles
+     */
+    public function removeRole(\Lantern\AuthBundle\Entity\Role $roles)
+    {
+        $this->roles->removeElement($roles);
     }
 
     public function __toString()

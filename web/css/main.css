@@ -286,9 +286,11 @@ nav.nav-bar ul.nav-weather li ul li {
 
 .media-box-body-container {
     overflow-x:      auto;
+    overflow-y:    hidden;
 }
 
 .media-box-body {
+    overflow: scroll;
 }
 
 .media-item-container {
@@ -403,6 +405,22 @@ footer, footer p, footer a {
 
 }
 
+.widget {
+}
+
+.widget-body {
+    overflow-x:            auto;
+    overflow-y:          hidden;
+}
+
+.media-group {
+}
+
+.media-item {
+  display:               flex;
+  flex-direction:      column;
+  justify-content:   flex-end;
+}
 
 
 

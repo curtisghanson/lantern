@@ -7,10 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
- * AuthUser
+ * User
  */
-class AuthUser implements AdvancedUserInterface, \Serializable
+class User implements AdvancedUserInterface, \Serializable
 {
+    const ROLE_DEFAULT           = 'ROLE_USER';
+    const ROLE_USER              = 'ROLE_USER';
+    const ROLE_ADMIN             = 'ROLE_ADMIN';
+    const ROLE_SUPER_ADMIN       = 'ROLE_SUPER_ADMIN';
+    const ROLE_ALLOWED_TO_SWITCH = 'ROLE_ALLOWED_TO_SWITCH';
+
     /**
      * @var integer
      */
@@ -57,21 +63,19 @@ class AuthUser implements AdvancedUserInterface, \Serializable
     private $roles;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $groups;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->isActive = true;
-        $this->salt = md5(uniqid(null, true));
-        $this->roles = new ArrayCollection();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getRoles()
-    {
-        return $this->roles->toArray();
+        $this->salt     = md5(uniqid(null, true));
+        $this->groups   = new ArrayCollection();
+        $this->roles    = new ArrayCollection();
     }
 
     /**
@@ -115,7 +119,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set username
      *
      * @param string $username
-     * @return AuthUser
+     * @return User
      */
     public function setUsername($username)
     {
@@ -138,7 +142,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set password
      *
      * @param string $password
-     * @return AuthUser
+     * @return User
      */
     public function setPassword($password)
     {
@@ -161,7 +165,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set salt
      *
      * @param string $salt
-     * @return AuthUser
+     * @return User
      */
     public function setSalt($salt)
     {
@@ -184,7 +188,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set email
      *
      * @param string $email
-     * @return AuthUser
+     * @return User
      */
     public function setEmail($email)
     {
@@ -207,7 +211,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set lastLogin
      *
      * @param \DateTime $lastLogin
-     * @return AuthUser
+     * @return User
      */
     public function setLastLogin($lastLogin)
     {
@@ -230,7 +234,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set isActive
      *
      * @param boolean $isActive
-     * @return AuthUser
+     * @return User
      */
     public function setIsActive($isActive)
     {
@@ -253,7 +257,7 @@ class AuthUser implements AdvancedUserInterface, \Serializable
      * Set isLocked
      *
      * @param boolean $isLocked
-     * @return AuthUser
+     * @return User
      */
     public function setIsLocked($isLocked)
     {
@@ -293,12 +297,31 @@ class AuthUser implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        #return $this->roles->toArray();
+        
+        $roles = $this->roles->toArray();
+
+        foreach ($this->getGroups() as $group) {
+            $roles = array_merge($roles, $group->getRoles());
+        }
+
+        // we need to make sure to have at least one role
+        $roles[] = static::ROLE_DEFAULT;
+
+        return array_unique($roles);
+    }
+
+    /**
      * Add roles
      *
-     * @param \Lantern\AuthBundle\Entity\AuthRole $roles
-     * @return AuthUser
+     * @param \Lantern\AuthBundle\Entity\Role $roles
+     * @return User
      */
-    public function addRole(\Lantern\AuthBundle\Entity\AuthRole $roles)
+    public function addRole(\Lantern\AuthBundle\Entity\Role $roles)
     {
         $this->roles[] = $roles;
     
@@ -308,13 +331,43 @@ class AuthUser implements AdvancedUserInterface, \Serializable
     /**
      * Remove roles
      *
-     * @param \Lantern\AuthBundle\Entity\AuthRole $roles
+     * @param \Lantern\AuthBundle\Entity\Role $roles
      */
-    public function removeRole(\Lantern\AuthBundle\Entity\AuthRole $roles)
+    public function removeRole(\Lantern\AuthBundle\Entity\Role $roles)
     {
         $this->roles->removeElement($roles);
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function getGroups()
+    {
+        return $this->groups->toArray();
+    }
+
+    /**
+     * Add groups
+     *
+     * @param \Lantern\AuthBundle\Entity\Group $groups
+     * @return User
+     */
+    public function addGroup(\Lantern\AuthBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+    
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \Lantern\AuthBundle\Entity\Group $groups
+     */
+    public function removeGroup(\Lantern\AuthBundle\Entity\Group $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
 
     public function __toString()
     {
