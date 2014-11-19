@@ -1,0 +1,46 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'lock' %}
+{% set pageTitle = 'Admin Panel' %}
+{% set pageSubtitle = 'Security' %}
+
+{% block navBody %}
+<nav>
+    <ul>
+        <li>
+            <a href="{{ path('LanternAdminBundle_dashboard') }}" title="Dashboard">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">Dashboard</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="#">
+                <span class="fa fa-lg fa-fw fa-lock"></span>
+                <span class="menu-item-parent">Security</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ path('LanternAdminBundle_user') }}">
+                        <span class="fa fa-lg fa-fw fa-user"></span> Users
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('LanternAdminBundle_group') }}">
+                        <span class="fa fa-lg fa-fw fa-group"></span> Groups
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('LanternAdminBundle_role') }}">
+                        <span class="fa fa-lg fa-fw fa-certificate"></span> Roles
+                    </a>
+                </li>
+            </ul>
+        </li>
+        </li>
+    </ul>
+</nav>
+{% endblock navBody %}
+
+{% block contentBody %}
+    I am the dashboard!
+{% endblock contentBody %}

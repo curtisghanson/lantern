@@ -1,0 +1,24 @@
+LanternAdminBundle_home:
+    pattern:  /
+    defaults: { _controller: LanternAdminBundle:Admin:dashboard }
+
+# alias -> LanternAdminBundle_home
+LanternAdminBundle_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: LanternAdminBundle:Admin:dashboard }
+
+LanternAdminBundle_security:
+    pattern:  /security
+    defaults: { _controller: LanternAdminBundle:Admin:security }
+
+LanternAdminBundle_user:
+    pattern:  /user
+    defaults: { _controller: LanternAdminBundle:Admin:user }
+
+LanternAdminBundle_group:
+    pattern:  /group
+    defaults: { _controller: LanternAdminBundle:Admin:group }
+
+LanternAdminBundle_role:
+    pattern:  /role
+    defaults: { _controller: LanternAdminBundle:Admin:role }

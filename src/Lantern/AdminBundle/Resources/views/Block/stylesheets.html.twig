@@ -1,0 +1,25 @@
+{# LESS Stylesheets #}
+{#}
+OFF For Now
+{% stylesheets
+          '@LanternAdminBundle/Resources/public/less/smartadmin-production.less'
+          filter='less'
+          output='bundles/lanternadmin/css/less.css'
+     %}
+     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+{% endstylesheets %}
+{#}
+{# CSS Stylesheets #}
+{% stylesheets
+          '@LanternAdminBundle/Resources/public/css/bootstrap.min.css'
+          '@LanternAdminBundle/Resources/public/css/font-awesome.min.css'
+          '@LanternAdminBundle/Resources/public/css/smartadmin-production.css'
+          '@LanternAdminBundle/Resources/public/css/smartadmin-skins.css'
+          '@LanternAdminBundle/Resources/public/css/smartadmin-rtl.css'
+          '@LanternAdminBundle/Resources/public/css/your_style.css'
+          '@LanternAdminBundle/Resources/public/css/demo.css'
+          filter='cssrewrite'
+          output='bundles/lanternadmin/css/css.css'
+     %}
+     <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}

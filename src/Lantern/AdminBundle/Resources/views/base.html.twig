@@ -1,0 +1,111 @@
+{% block document %}
+<!DOCTYPE html>
+<html lang="en-us">
+    {% block html %}
+
+        <head>
+            {% block head %}
+
+                {% block meta %}
+                    {% include 'LanternAdminBundle:Block:meta.html.twig' %}
+                {% endblock meta %}
+
+                {% block title %}
+                    {% include 'LanternAdminBundle:Block:title.html.twig' %}
+                {% endblock title%}
+
+                {% block stylesheets %}
+                    {% include 'LanternAdminBundle:Block:stylesheets.html.twig' %}
+                {% endblock stylesheets %}
+
+                {% block icons %}
+                    {% include 'LanternAdminBundle:Block:icons.html.twig' %}
+                {% endblock icons %}
+
+                {% block sitemap %}
+                    {% include 'LanternAdminBundle:Block:sitemap.html.twig' %}
+                {% endblock sitemap %}
+
+                {% block shiv %}
+                    {#}<script src="{{ asset('bundles/lanternadmin/js/modernizr/modernizr-2.6.2.js') }}"></script>{#}
+                {% endblock shiv %}
+
+                {% block font %}
+                    <!-- GOOGLE FONT -->
+                    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+                {% endblock font %}
+
+            {% endblock head %}
+        </head>
+
+        <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
+        <body{% if doc.body.attr.class is defined %} class="{{ doc.body.attr.class }}"{% endif %}>
+            {% block body %}
+
+                {% block header %}
+                    {% include 'LanternAdminBundle:Block:header.html.twig' %}
+                {% endblock header %}
+
+                <!-- Left panel : Navigation area -->
+                <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+                <aside id="left-panel">
+                    {% block aside %}
+
+                        {% block navHeader %}
+                            {% include 'LanternAdminBundle:Block:navHeader.html.twig' %}
+                        {% endblock navHeader %}
+
+                        {% block navBody %}
+                            {% include 'LanternAdminBundle:Block:navBody.html.twig' %}
+                        {% endblock navBody %}
+
+                        {% block navFooter %}
+                            {% include 'LanternAdminBundle:Block:navFooter.html.twig' %}
+                        {% endblock navFooter %}
+
+                    {% endblock aside %}
+                </aside>
+                <!-- END NAVIGATION -->
+
+                <!-- MAIN PANEL -->
+                <div id="main" role="main">
+                    {% block main %}
+
+                        {% block ribbon %}
+                            {% include 'LanternAdminBundle:Block:ribbon.html.twig' %}
+                        {% endblock ribbon %}
+
+                        {% block content %}
+                            <div id="content" style="opacity: 1;">
+                                {% block contentHeader %}
+                                    {% include 'LanternAdminBundle:Block:contentHeader.html.twig' %}
+                                {% endblock contentHeader %}
+                                {% block contentBody %}
+                                {% endblock contentBody %}
+                                {% block contentFooter %}
+                                {% endblock contentFooter %}
+                            </div>
+                        {% endblock content %}
+
+                    {% endblock main %}
+                </div>
+                <!-- END MAIN PANEL -->
+
+                {% block shortcuts %}
+                    {% include 'LanternAdminBundle:Block:shortcuts.html.twig' %}
+                {% endblock shortcuts %}
+
+                {% block javascripts %}
+                    {% include 'LanternAdminBundle:Block:javascripts.html.twig' %}
+                {% endblock javascripts %}
+
+                {% block analytics %}
+                    {% include 'LanternAdminBundle:Block:analytics.html.twig' %}
+                {% endblock analytics %}
+
+            {% endblock body %}
+        </body>
+
+    {% endblock html %}
+</html>
+{% endblock document %}
