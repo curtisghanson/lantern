@@ -1,53 +1,64 @@
-{% extends '::base.html.twig' %}
+{% extends 'LanternAdminBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>User list</h1>
+{% set pageIcon = 'user' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'users'|trans %}
+{% set activeItem = 'LanternAuthBundle_user_index' %}
 
-    <table class="records_list">
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+
+    <table class="table table-bordered table-striped table-condensed table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Salt</th>
-                <th>Email</th>
-                <th>Lastlogin</th>
-                <th>Isactive</th>
-                <th>Islocked</th>
-                <th>Actions</th>
+                <th><input type="checkbox" class="select-all" /></th>
+                <th>{{ 'actions'|trans }}</th>
+                <th>{{ 'username'|trans }}</th>
+                <th>{{ 'email'|trans }}</th>
+                <th>{{ 'last.login'|trans }}</th>
+                <th>{{ 'status'|trans }}</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.username }}</td>
-                <td>{{ entity.password }}</td>
-                <td>{{ entity.salt }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.isActive }}</td>
-                <td>{{ entity.isLocked }}</td>
+                <td><input type="checkbox" /></td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <div class="btn-group" role="group" aria-label="{{ 'user.actions'|trans }}">
+                        <a href="{{ path('LanternAuthBundle_user_view', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="{{ 'view'|trans }}">
+                            <span class="fa fa-search-plus"></span>
+                        </a>
+                        <a href="{{ path('LanternAuthBundle_user_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="{{ 'edit'|trans }}">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                    </div>
+                </td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td>
+                    {% if entity.lastLogin %}
+                        {{ entity.lastLogin|date('Y-m-d H:i:s') }}
+                    {% else %}
+                        <em class="text-muted">{{ 'no.data.available'|trans }}</em>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if entity.isLocked %}
+                        <span class="label label-warning">{{ 'locked'|trans }}</span>
+                    {% else %}
+                        <span class="label label-success">{{ 'active'|trans }}</span>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('user_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+    <a href="{{ path('LanternAuthBundle_user_new') }}" class="btn btn-default">
+        <span class="fa fa-plus"></span>
+        {{ 'new.user'|trans }}
+    </a>
+{% endblock contentBody %}

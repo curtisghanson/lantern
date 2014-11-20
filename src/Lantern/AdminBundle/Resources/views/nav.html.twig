@@ -1,0 +1,176 @@
+{% import _self as li %}
+
+{% if activeItem is not defined %}
+    {% set activeItem = 'LanternAdminBundle_dashboard' %}
+{% endif %}
+
+<nav>
+    <ul>
+        <li{{ li.active(activeItem, 'LanternAdminBundle_dashboard') }}>
+            <a href="{{ path('LanternAdminBundle_dashboard') }}" title="{{ 'dashboard'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'dashboard'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#"  title="{{ 'security'|trans }}">
+                <span class="fa fa-lg fa-fw fa-lock"></span>
+                <span class="menu-item-parent">{{ 'security'|trans }}</span>
+            </a>
+            <ul>
+                <li{{ li.active(activeItem, 'LanternAuthBundle_user_index') }}>
+                    <a href="{{ path('LanternAuthBundle_user_index') }}" title="{{ 'users'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-user"></span>
+                        {{ 'users'|trans }}
+                    </a>
+                </li>
+                <li{{ li.active(activeItem, 'LanternAuthBundle_group_index') }}>
+                    <a href="{{ path('LanternAuthBundle_group_index') }}" title="{{ 'groups'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-group"></span>
+                        {{ 'groups'|trans }}
+                    </a>
+                </li>
+               <li{{ li.active(activeItem, 'LanternAuthBundle_role_index') }}>
+                    <a href="{{ path('LanternAuthBundle_role_index') }}" title="{{ 'roles'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-certificate"></span>
+                        {{ 'roles'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="{{ 'server'|trans }}">
+                <span class="fa fa-lg fa-fw fa-sliders"></span>
+                <span class="menu-item-parent">{{ 'server'|trans }}</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="#" title="{{ 'general'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-user"></span>
+                        {{ 'general'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'ssl.and.proxy'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-key"></span>
+                        {{ 'ssl.and.proxy'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'api'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-puzzle-piece"></span>
+                        {{ 'api'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'update'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-exclamation"></span>
+                        {{ 'update'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="{{ 'content'|trans }}">
+                <span class="fa fa-lg fa-fw fa-file-o"></span>
+                <span class="menu-item-parent">{{ 'content'|trans }}</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="#" title="{{ 'libraries'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-hdd-o"></span>
+                        {{ 'libraries'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'directories'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-foler-o"></span>
+                        {{ 'directories'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'api'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-puzzle-piece"></span>
+                        {{ 'api'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'update'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-user"></span>
+                        {{ 'update'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="{{ 'database'|trans }}">
+                        <span class="fa fa-lg fa-fw fa-user"></span>
+                        {{ 'database'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="{{ 'services'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'services'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'dlna'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'dlna'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'transcoding'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'transcoding'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'metadata.providers'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'metadata.providers'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'plugins'|trans }}">
+                <span class="fa fa-lg fa-fw fa-plug"></span>
+                <span class="menu-item-parent">{{ 'plugins'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'scheduling'|trans }}">
+                <span class="fa fa-lg fa-fw fa-clock-o"></span>
+                <span class="menu-item-parent">{{ 'scheduling'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'themes'|trans }}">
+                <span class="fa fa-lg fa-fw fa-paint-brush"></span>
+                <span class="menu-item-parent">{{ 'themes'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'sharing'|trans }}">
+                <span class="fa fa-lg fa-fw fa-share-alt"></span>
+                <span class="menu-item-parent">{{ 'sharing'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'party'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'party'|trans }}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="{{ 'social'|trans }}">
+                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="menu-item-parent">{{ 'social'|trans }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{% macro active(activeItem, route) %}
+    {{ activeItem == route ? ' class="active"' : '' }}
+{% endmacro %}

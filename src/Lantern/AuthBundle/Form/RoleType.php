@@ -20,6 +20,7 @@ class RoleType extends AbstractType
             ->add('description')
             ->add('isActive')
             ->add('parent')
+            ->add('children')
             ->add('users')
             ->add('groups')
         ;

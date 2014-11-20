@@ -4,12 +4,12 @@ LanternAuthBundle_index:
 
 LanternAuthBundle_user:
     resource: "@LanternAuthBundle/Resources/config/routing/user.yml"
-    prefix:   /user
+    prefix:   /admin/user
 
 LanternAuthBundle_group:
     resource: "@LanternAuthBundle/Resources/config/routing/group.yml"
-    prefix:   /group
+    prefix:   /admin/group
 
 LanternAuthBundle_role:
     resource: "@LanternAuthBundle/Resources/config/routing/role.yml"
-    prefix:   /role
+    prefix:   /admin/role

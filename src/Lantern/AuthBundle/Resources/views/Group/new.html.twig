@@ -1,15 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends 'LanternAdminBundle::base.html.twig' %}
 
-{% block body -%}
+{% set pageIcon = 'group' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'new.group'|trans %}
+{% set activeItem = 'LanternAuthBundle_group_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
     <h1>Group creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('group') }}">
+        <a href="{{ path('LanternAuthBundle_group_index') }}">
             Back to the list
         </a>
     </li>
 </ul>
-{% endblock %}
+{% endblock contentBody %}

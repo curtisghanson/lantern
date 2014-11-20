@@ -44,7 +44,7 @@ class UserController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_user_view', array('id' => $entity->getId())));
         }
 
         return $this->render('LanternAuthBundle:User:new.html.twig', array(
@@ -63,7 +63,7 @@ class UserController extends Controller
     private function createCreateForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('user_create'),
+            'action' => $this->generateUrl('LanternAuthBundle_user_create'),
             'method' => 'POST',
         ));
 
@@ -91,7 +91,7 @@ class UserController extends Controller
      * Finds and displays a User entity.
      *
      */
-    public function showAction($id)
+    public function viewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -103,7 +103,7 @@ class UserController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('LanternAuthBundle:User:show.html.twig', array(
+        return $this->render('LanternAuthBundle:User:view.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -142,7 +142,7 @@ class UserController extends Controller
     private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('user_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('LanternAuthBundle_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,7 +171,7 @@ class UserController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_user_edit', array('id' => $id)));
         }
 
         return $this->render('LanternAuthBundle:User:edit.html.twig', array(
@@ -201,7 +201,7 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('user'));
+        return $this->redirect($this->generateUrl('LanternAuthBundle_user_index'));
     }
 
     /**
@@ -214,7 +214,7 @@ class UserController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('LanternAuthBundle_user_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

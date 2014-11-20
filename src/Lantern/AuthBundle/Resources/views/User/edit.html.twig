@@ -1,16 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends 'LanternAdminBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>User edit</h1>
+{% set pageIcon = 'user' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'edit.user'|trans %}
+{% set activeItem = 'LanternAuthBundle_user_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('LanternAuthBundle_user_index') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock contentBody %}

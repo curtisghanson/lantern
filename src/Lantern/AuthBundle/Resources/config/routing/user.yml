@@ -1,30 +1,30 @@
-user:
+LanternAuthBundle_user_index:
     pattern:  /
     defaults: { _controller: "LanternAuthBundle:User:index" }
 
-user_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "LanternAuthBundle:User:show" }
+LanternAuthBundle_user_view:
+    pattern:  /{id}/view
+    defaults: { _controller: "LanternAuthBundle:User:view" }
 
-user_new:
+LanternAuthBundle_user_new:
     pattern:  /new
     defaults: { _controller: "LanternAuthBundle:User:new" }
 
-user_create:
+LanternAuthBundle_user_create:
     pattern:  /create
     defaults: { _controller: "LanternAuthBundle:User:create" }
     requirements: { _method: post }
 
-user_edit:
+LanternAuthBundle_user_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "LanternAuthBundle:User:edit" }
 
-user_update:
+LanternAuthBundle_user_update:
     pattern:  /{id}/update
     defaults: { _controller: "LanternAuthBundle:User:update" }
     requirements: { _method: post|put }
 
-user_delete:
+LanternAuthBundle_user_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "LanternAuthBundle:User:delete" }
     requirements: { _method: post|delete }

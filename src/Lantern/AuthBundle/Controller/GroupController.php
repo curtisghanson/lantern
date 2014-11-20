@@ -44,7 +44,7 @@ class GroupController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('group_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_group_view', array('id' => $entity->getId())));
         }
 
         return $this->render('LanternAuthBundle:Group:new.html.twig', array(
@@ -63,7 +63,7 @@ class GroupController extends Controller
     private function createCreateForm(Group $entity)
     {
         $form = $this->createForm(new GroupType(), $entity, array(
-            'action' => $this->generateUrl('group_create'),
+            'action' => $this->generateUrl('LanternAuthBundle_group_create'),
             'method' => 'POST',
         ));
 
@@ -91,7 +91,7 @@ class GroupController extends Controller
      * Finds and displays a Group entity.
      *
      */
-    public function showAction($id)
+    public function viewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -103,7 +103,7 @@ class GroupController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('LanternAuthBundle:Group:show.html.twig', array(
+        return $this->render('LanternAuthBundle:Group:view.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -142,7 +142,7 @@ class GroupController extends Controller
     private function createEditForm(Group $entity)
     {
         $form = $this->createForm(new GroupType(), $entity, array(
-            'action' => $this->generateUrl('group_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('LanternAuthBundle_group_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,7 +171,7 @@ class GroupController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('group_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_group_edit', array('id' => $id)));
         }
 
         return $this->render('LanternAuthBundle:Group:edit.html.twig', array(
@@ -201,7 +201,7 @@ class GroupController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('group'));
+        return $this->redirect($this->generateUrl('LanternAuthBundle_group_index'));
     }
 
     /**
@@ -214,7 +214,7 @@ class GroupController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('group_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('LanternAuthBundle_group_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

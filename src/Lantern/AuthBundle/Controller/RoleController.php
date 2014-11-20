@@ -44,7 +44,7 @@ class RoleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('role_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_role_view', array('id' => $entity->getId())));
         }
 
         return $this->render('LanternAuthBundle:Role:new.html.twig', array(
@@ -63,7 +63,7 @@ class RoleController extends Controller
     private function createCreateForm(Role $entity)
     {
         $form = $this->createForm(new RoleType(), $entity, array(
-            'action' => $this->generateUrl('role_create'),
+            'action' => $this->generateUrl('LanternAuthBundle_role_create'),
             'method' => 'POST',
         ));
 
@@ -91,7 +91,7 @@ class RoleController extends Controller
      * Finds and displays a Role entity.
      *
      */
-    public function showAction($id)
+    public function viewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -103,7 +103,7 @@ class RoleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('LanternAuthBundle:Role:show.html.twig', array(
+        return $this->render('LanternAuthBundle:Role:view.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -142,7 +142,7 @@ class RoleController extends Controller
     private function createEditForm(Role $entity)
     {
         $form = $this->createForm(new RoleType(), $entity, array(
-            'action' => $this->generateUrl('role_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('LanternAuthBundle_role_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,7 +171,7 @@ class RoleController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('role_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('LanternAuthBundle_role_edit', array('id' => $id)));
         }
 
         return $this->render('LanternAuthBundle:Role:edit.html.twig', array(
@@ -201,7 +201,7 @@ class RoleController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('role'));
+        return $this->redirect($this->generateUrl('LanternAuthBundle_role_index'));
     }
 
     /**
@@ -214,7 +214,7 @@ class RoleController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('role_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('LanternAuthBundle_role_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

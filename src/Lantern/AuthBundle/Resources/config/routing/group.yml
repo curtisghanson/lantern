@@ -1,30 +1,30 @@
-group:
+LanternAuthBundle_group_index:
     pattern:  /
     defaults: { _controller: "LanternAuthBundle:Group:index" }
 
-group_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "LanternAuthBundle:Group:show" }
+LanternAuthBundle_group_view:
+    pattern:  /{id}/view
+    defaults: { _controller: "LanternAuthBundle:Group:view" }
 
-group_new:
+LanternAuthBundle_group_new:
     pattern:  /new
     defaults: { _controller: "LanternAuthBundle:Group:new" }
 
-group_create:
+LanternAuthBundle_group_create:
     pattern:  /create
     defaults: { _controller: "LanternAuthBundle:Group:create" }
     requirements: { _method: post }
 
-group_edit:
+LanternAuthBundle_group_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "LanternAuthBundle:Group:edit" }
 
-group_update:
+LanternAuthBundle_group_update:
     pattern:  /{id}/update
     defaults: { _controller: "LanternAuthBundle:Group:update" }
     requirements: { _method: post|put }
 
-group_delete:
+LanternAuthBundle_group_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "LanternAuthBundle:Group:delete" }
     requirements: { _method: post|delete }

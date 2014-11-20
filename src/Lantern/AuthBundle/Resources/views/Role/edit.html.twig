@@ -1,16 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends 'LanternAdminBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Role edit</h1>
+{% set pageIcon = 'certificate' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'edit.role'|trans %}
+{% set activeItem = 'LanternAuthBundle_role_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('role') }}">
+        <a href="{{ path('LanternAuthBundle_role_index') }}">
             Back to the list
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
-{% endblock %}
+{% endblock contentBody %}

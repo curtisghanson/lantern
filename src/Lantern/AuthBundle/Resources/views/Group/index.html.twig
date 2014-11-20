@@ -1,7 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends 'LanternAdminBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Group list</h1>
+{% set pageIcon = 'group' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'groups'|trans %}
+{% set activeItem = 'LanternAuthBundle_group_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
 
     <table class="records_list">
         <thead>
@@ -17,7 +25,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('group_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('LanternAuthBundle_group_view', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.shortName }}</td>
                 <td>{{ entity.longName }}</td>
                 <td>{{ entity.description }}</td>
@@ -25,10 +33,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('group_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('LanternAuthBundle_group_view', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('group_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('LanternAuthBundle_group_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -39,9 +47,9 @@
 
         <ul>
         <li>
-            <a href="{{ path('group_new') }}">
+            <a href="{{ path('LanternAuthBundle_group_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock contentBody %}

@@ -20,6 +20,7 @@ class GroupType extends AbstractType
             ->add('description')
             ->add('isActive')
             ->add('parent')
+            ->add('children')
             ->add('roles')
             ->add('users')
         ;
