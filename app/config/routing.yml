@@ -1,3 +1,4 @@
+
 # Lentern Security Routes
 login:
     path:     /login
@@ -26,6 +27,10 @@ LanternAppBundle:
 # Lantern Dependency Bundles
 LanternAuthBundle:
     resource: "@LanternAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
+LanternExtLibBundle:
+    resource: "@LanternExtLibBundle/Resources/config/routing.yml"
     prefix:   /
 
 LanternFileMgrBundle:

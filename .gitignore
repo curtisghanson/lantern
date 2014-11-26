@@ -5,6 +5,7 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
+web/assetic/*
 web/bundles/*
 web/css/*
 web/font/*
@@ -13,6 +14,7 @@ web/img/*
 web/js/*
 web/less/*
 web/uploads/*
+src/Lantern/ExtLibBundle/Resources/public/bower_components/*
 *.php~
 
 # Configuration files

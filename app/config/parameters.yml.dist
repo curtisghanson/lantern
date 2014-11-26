@@ -22,7 +22,7 @@ parameters:
     # the following parameters should not be altered
     app_name:          lantern
     app_description:   'an open source web based media server'
-    app_keywords:      'lantern open source web application media server php javascript html5 css3'
+    app_keywords:      'lantern open source web application media server php js html5 css3'
     app_license:       'gpl 3.0'
     app_version:       1.0
     app_release:       0.0.1-alpha
@@ -34,7 +34,6 @@ parameters:
     author_name:            'curtis g hanson'
     author_email:           curtisghanson@gmail.com
     author_site:            fartinginelevators.com
-    database_path:          null
 
     # debug parameters
     debug_toolbar:          true

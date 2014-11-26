@@ -1,0 +1,3 @@
+lantern_ext_lib_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: LanternExtLibBundle:Default:index }

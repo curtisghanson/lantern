@@ -1,0 +1,47 @@
+{
+  "name": "lantern",
+  "version": "0.0.1",
+  "homepage": "https://github.com/curtisghanson/lantern",
+  "authors": [
+    "Curtis G Hanson <curtisghanson@gmail.com>"
+  ],
+  "description": "an open source web based media server",
+  "keywords": [
+    "lantern",
+    "open",
+    "source",
+    "web",
+    "application",
+    "media",
+    "server",
+    "php",
+    "js",
+    "html5",
+    "css3"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.2.0",
+    "fontawesome": "~4.2.0",
+    "hammer.js": "~2.0.4",
+    "intro.js": "~1.0.0",
+    "bootstrap": "~3.3.1",
+    "jquery-file-upload": "~9.8.0",
+    "jquery-pjax": "~1.9.3",
+    "jquery.ui": "~1.11.2",
+    "less.js": "~2.1.0",
+    "material-design-icons": "~1.0.1",
+    "modernizr": "~2.8.3",
+    "normalize.css": "~3.0.2",
+    "respond": "~1.4.2",
+    "typeahead.js": "~0.10.5"
+  }
+}

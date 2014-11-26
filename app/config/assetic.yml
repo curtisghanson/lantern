@@ -1,0 +1,74 @@
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: true
+    bundles:
+        - LanternThemeModernThemeBundle
+        - LanternAdminBundle
+        - LanternExtLibBundle
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        cssembed:
+            jar: "%kernel.root_dir%/Resources/filters/cssembed-0.4.5.jar"
+        less:
+            node:       %node_base_path%
+            node_paths: [%node_modules_path%]
+            apply_to:   "\.less$"
+    assets:
+        jquery:
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/jquery/dist/jquery.js'
+            options:
+                version:    2.1.1
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        jqueryui:
+            inputs:
+               - '@LanternExtLibBundle/Resources/public/bower_components/jquery.ui/dist/jquery-ui.js'
+            options:
+                version:    1.11.2
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        bootstrap_less:
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/bootstrap/less/bootstrap.less'
+            options:
+                version:    3.3.1
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        bootstrap_js:
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/bootstrap/dist/js/bootstrap.js'
+            options:
+                version:    3.3.1
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        fontawesome_less:
+           inputs:
+              - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/less/font-awesome.less'
+           options:
+               version:    4.2.0
+               updated_at: 2014-11-25
+               updated_by: curtisghanson@gmail.com
+        fontawesome_font:
+           inputs:
+              - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/fonts/*'
+           options:
+               version:    4.2.0
+               updated_at: 2014-11-25
+               updated_by: curtisghanson@gmail.com
+        modernizr:
+           inputs:
+              - '@LanternExtLibBundle/Resources/public/bower_components/modernizr/modernizr.js'
+           options:
+               version:    2.8.3
+               updated_at: 2014-11-25
+               updated_by: curtisghanson@gmail.com
+        lanternadmin_less:
+           inputs:
+              - '@LanternAdminBundle/Resources/public/less/lanternadmin.less'
+           options:
+               version:    0.0.1
+               updated_at: 2014-11-25
+               updated_by: curtisghanson@gmail.com

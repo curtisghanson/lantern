@@ -1,0 +1,7 @@
+parameters:
+#    lantern_ext_lib.example.class: Lantern\ExtLibBundle\Example
+
+services:
+#    lantern_ext_lib.example:
+#        class: %lantern_ext_lib.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
