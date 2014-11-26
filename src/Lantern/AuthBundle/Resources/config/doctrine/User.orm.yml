@@ -14,6 +14,24 @@ Lantern\AuthBundle\Entity\User:
             length:   64
             unique:   true
             nullable: false
+        firstName:
+            column:   first_name
+            type:     string
+            length:   64
+            unique:   false
+            nullable: true
+        lastName:
+            column:   last_name
+            type:     string
+            length:   64
+            unique:   false
+            nullable: tru
+        nickname:
+            column:   nickname
+            type:     string
+            length:   64
+            unique:   false
+            nullable: true
         password:
             column:   password
             type:     string
@@ -47,6 +65,11 @@ Lantern\AuthBundle\Entity\User:
             type:     boolean
             unique:   false
             nullable: true
+    uniqueConstraints:
+        lantern_user_username_unique_idx:
+            columns: [ username ]
+        lantern_user_email_unique_idx:
+            columns: [ email ]
     manyToMany:
         groups:
             targetEntity: Group
@@ -59,7 +82,7 @@ Lantern\AuthBundle\Entity\User:
                 inverseJoinColumns:
                     group_id:
                         referencedColumnName: id
-        roles:
+        userRoles:
             targetEntity: Role
             inversedBy:   users
             joinTable:

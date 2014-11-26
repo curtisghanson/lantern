@@ -22,3 +22,7 @@ LanternAdminBundle_group:
 LanternAdminBundle_role:
     pattern:  /role
     defaults: { _controller: LanternAdminBundle:Admin:role }
+
+LanternAdminBundle_file:
+    pattern:  /file
+    defaults: { _controller: LanternAdminBundle:File:index }

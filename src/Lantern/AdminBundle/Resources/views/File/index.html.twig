@@ -1,0 +1,18 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'dashboard' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'file'|trans %}
+{% set activeItem = 'LanternAdminBundle_dashboard' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <ul>
+        {% for node in directory %}
+            <li>{{ node }}</li>
+        {% endfor %}
+    </ul>
+{% endblock contentBody %}

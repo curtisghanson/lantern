@@ -72,6 +72,10 @@ class Role implements RoleInterface, \Serializable
     {
         return serialize(array(
             $this->id,
+            $this->shortName,
+            $this->longName,
+            $this->description,
+            $this->isActive,
         ));
     }
 
@@ -82,6 +86,10 @@ class Role implements RoleInterface, \Serializable
     {
         list (
             $this->id,
+            $this->shortName,
+            $this->longName,
+            $this->description,
+            $this->isActive,
         ) = unserialize($serialized);
     }
 

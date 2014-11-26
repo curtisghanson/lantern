@@ -1,7 +1,7 @@
 parameters:
-#    lantern_auth.example.class: Lantern\AuthBundle\Example
+    lantern_auth.role_manager.class: Lantern\AuthBundle\Entity\RoleManager
 
 services:
-#    lantern_auth.example:
-#        class: %lantern_auth.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    lantern_auth.role_manager:
+        class:     %lantern_auth.role_manager.class%
+        arguments: [ @security.role_hierarchy ]

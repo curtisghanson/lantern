@@ -35,12 +35,24 @@ class UserController extends Controller
      */
     public function createAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $entity = new User();
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($entity);
+            $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+            $entity->setPassword($password);
+            
+            // maybe we don't need this. not sure yet
+            // all registered users get role_user by default
+            //$role = $em->getRepository('LanternAuthBundle:Role')->findOneByShortName('ROLE_USER');
+            //$entity->addRole($role);
+
             $em->persist($entity);
             $em->flush();
 
@@ -51,6 +63,7 @@ class UserController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+
     }
 
     /**
@@ -157,8 +170,9 @@ class UserController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $entity = $em->getRepository('LanternAuthBundle:User')->find($id);
+        $originalPassword = $entity->getPassword();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
@@ -169,10 +183,26 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            $plainPassword = $editForm->get('password')->getData();
+            
+            if (!empty($plainPassword)) {  
+                //encode the password   
+                $factory = $this->get('security.encoder_factory');
+                $encoder = $factory->getEncoder($entity);
+                $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+                $entity->setPassword($password);
+            }
+            else {
+                $entity->setPassword($originalPassword);
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('LanternAuthBundle_user_edit', array('id' => $id)));
         }
+
+            
 
         return $this->render('LanternAuthBundle:User:edit.html.twig', array(
             'entity'      => $entity,

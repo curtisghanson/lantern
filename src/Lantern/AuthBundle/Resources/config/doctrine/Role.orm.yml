@@ -30,6 +30,9 @@ Lantern\AuthBundle\Entity\Role:
             type:     boolean
             unique:   false
             nullable: true
+    uniqueConstraints:
+        lantern_role_short_name_unique_idx:
+            columns: [ short_name ]
     oneToMany:
         children:
             targetEntity: Role
@@ -41,7 +44,7 @@ Lantern\AuthBundle\Entity\Role:
     manyToMany:
         users:
             targetEntity: User
-            mappedBy:     roles
+            mappedBy:     userRoles
         groups:
             targetEntity: Group
             mappedBy:     roles

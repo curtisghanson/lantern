@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Lantern\AuthBundle\Entity\Role;
 use Lantern\AuthBundle\Form\RoleType;
 
+use Lantern\AuthBundle\Entity\RoleManager;
+
 /**
  * Role controller.
  *
@@ -21,12 +23,21 @@ class RoleController extends Controller
      */
     public function indexAction()
     {
+        //$rh = $this->container->getParameter('security.role_hierarchy.roles');
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('LanternAuthBundle:Role')->findAll();
 
+        $rh = $this->get('security.role_hierarchy');
+
+        $rm = new RoleManager($rh);
+        $hr = $rm->hasRole($entities, 'ROLE_USER');
+        
         return $this->render('LanternAuthBundle:Role:index.html.twig', array(
             'entities' => $entities,
+            //'rh' => $rh,
+            //'hr' => $hr,
         ));
     }
     /**

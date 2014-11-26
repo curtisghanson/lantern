@@ -30,6 +30,21 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      */
+    private $firstName;
+
+    /**
+     * @var string
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     */
+    private $nickname;
+
+    /**
+     * @var string
+     */
     private $password;
 
     /**
@@ -60,7 +75,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $roles;
+    private $userRoles;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -72,10 +87,10 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function __construct()
     {
-        $this->isActive = true;
-        $this->salt     = md5(uniqid(null, true));
-        $this->groups   = new ArrayCollection();
-        $this->roles    = new ArrayCollection();
+        $this->isActive  = true;
+        $this->salt      = md5(uniqid(null, true));
+        $this->groups    = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 
     /**
@@ -92,6 +107,16 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
+            $this->username,
+            $this->firstName,
+            $this->lastName,
+            $this->nickname,
+            $this->password,
+            $this->salt,
+            $this->email,
+            $this->lastLogin,
+            $this->isActive,
+            $this->isLocked,
         ));
     }
 
@@ -102,6 +127,16 @@ class User implements AdvancedUserInterface, \Serializable
     {
         list (
             $this->id,
+            $this->username,
+            $this->firstName,
+            $this->lastName,
+            $this->nickname,
+            $this->password,
+            $this->salt,
+            $this->email,
+            $this->lastLogin,
+            $this->isActive,
+            $this->isLocked,
         ) = unserialize($serialized);
     }
     
@@ -136,6 +171,75 @@ class User implements AdvancedUserInterface, \Serializable
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Set first name
+     *
+     * @param string $firstName
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    
+        return $this;
+    }
+
+    /**
+     * Get first name
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set last name
+     *
+     * @param string $lastName
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    
+        return $this;
+    }
+
+    /**
+     * Get last name
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     * @return User
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+    
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string 
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
     }
 
     /**
@@ -301,29 +405,44 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        #return $this->roles->toArray();
-        
-        $roles = $this->roles->toArray();
 
+        // declare empty role array
+        $roles = [];
+
+        // first get all roles inherited from assigned groups
         foreach ($this->getGroups() as $group) {
             $roles = array_merge($roles, $group->getRoles());
+        }
+
+        // then get any roles assigned directly to user
+       foreach ($this->userRoles->toArray() as $role) {
+            $roles = array_merge($roles, array($role->getRole()));
         }
 
         // we need to make sure to have at least one role
         $roles[] = static::ROLE_DEFAULT;
 
+        // return a unique array
         return array_unique($roles);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUserRoles()
+    {
+        return $this->userRoles->toArray();
     }
 
     /**
      * Add roles
      *
-     * @param \Lantern\AuthBundle\Entity\Role $roles
+     * @param \Lantern\AuthBundle\Entity\Role $userRoles
      * @return User
      */
-    public function addRole(\Lantern\AuthBundle\Entity\Role $roles)
+    public function addUserRole(\Lantern\AuthBundle\Entity\Role $userRoles)
     {
-        $this->roles[] = $roles;
+        $this->userRoles[] = $userRoles;
     
         return $this;
     }
@@ -331,11 +450,11 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Remove roles
      *
-     * @param \Lantern\AuthBundle\Entity\Role $roles
+     * @param \Lantern\AuthBundle\Entity\Role $userRoles
      */
-    public function removeRole(\Lantern\AuthBundle\Entity\Role $roles)
+    public function removeUserRole(\Lantern\AuthBundle\Entity\Role $userRoles)
     {
-        $this->roles->removeElement($roles);
+        $this->userRoles->removeElement($userRoles);
     }
 
     /**

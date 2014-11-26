@@ -30,6 +30,9 @@ Lantern\AuthBundle\Entity\Group:
             type:     boolean
             unique:   false
             nullable: true
+    uniqueConstraints:
+        lantern_group_short_name_unique_idx:
+            columns: [ short_name ]
     manyToMany:
         roles:
             targetEntity: Role
