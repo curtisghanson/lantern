@@ -134,12 +134,12 @@ background:#22262e !important;
 	border-bottom:none;
 }
 
-.smart-style-1 nav ul b .fa-expand-o:before {
-	content: "\f104";
+.smart-style-1 nav ul b .fa-plus-square-o:before {
+	content: "\f196";
 }
 
-.smart-style-1 nav ul b .fa-collapse-o:before {
-	content: "\f107";
+.smart-style-1 nav ul b .fa-minus-square-o:before {
+	content: "\f147";
 }
 
 .smart-style-1 .header-search > input[type="text"] {

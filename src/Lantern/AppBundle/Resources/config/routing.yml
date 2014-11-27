@@ -2,6 +2,10 @@ LanternAppBundle_index:
     pattern:  /
     defaults: { _controller: LanternAppBundle:Default:index }
 
+LanternAppBundle_install:
+    resource: "@LanternAppBundle/Resources/config/routing/install.yml"
+    prefix:   /install
+
 ajax:
     pattern:  /ajax
     defaults: { _controller: LanternAppBundle:Ajax:ajax }

@@ -1,0 +1,3 @@
+LanternAppBundle_install_index:
+    pattern:  /
+    defaults: { _controller: LanternAppBundle:Index:index }

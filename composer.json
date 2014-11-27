@@ -25,7 +25,8 @@
         "jms/security-extra-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
         "phansys/getid3": "2.1.*@dev",
-        "pulse00/ffmpeg-bundle": "dev-master"
+        "pulse00/ffmpeg-bundle": "dev-master",
+        "piwik/device-detector": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

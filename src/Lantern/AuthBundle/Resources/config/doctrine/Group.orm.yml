@@ -2,34 +2,40 @@ Lantern\AuthBundle\Entity\Group:
     type:            entity
     table:           lantern_group
     repositoryClass: Lantern\AuthBundle\Entity\GroupRepository
-    fields:
+    id:
         id:
-            type: integer
-            id:   true
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
             generator:
                 strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_group_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
         shortName:
             column:   short_name
             type:     string
             length:   32
-            unique:   true
             nullable: false
         longName:
             column:   long_name
             type:     string
             length:   64
-            unique:   false
             nullable: true
+            unique:   false
         description:
             column:   description
             type:     text
-            unique:   false
             nullable: true
+            unique:   false
         isActive:
             column:   is_active
             type:     boolean
-            unique:   false
             nullable: true
+            unique:   false
     uniqueConstraints:
         lantern_group_short_name_unique_idx:
             columns: [ short_name ]

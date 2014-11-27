@@ -16,18 +16,19 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Lantern\AppBundle\LanternAppBundle(),
+            new Lantern\AdminBundle\LanternAdminBundle(),
             new Lantern\AuthBundle\LanternAuthBundle(),
             new Lantern\ExtLibBundle\LanternExtLibBundle(),
             new Lantern\FileMgrBundle\LanternFileMgrBundle(),
             new Lantern\FormBundle\LanternFormBundle(),
-            new Lantern\TwigExtBundle\LanternTwigExtBundle(),
-            new Lantern\Theme\ModernThemeBundle\LanternThemeModernThemeBundle(),
             new Lantern\IntlBundle\LanternIntlBundle(),
+            new Lantern\MediaBundle\LanternMediaBundle(),
             new Lantern\MediaParserBundle\LanternMediaParserBundle(),
             new Lantern\MenuBundle\LanternMenuBundle(),
+            new Lantern\Theme\ModernThemeBundle\LanternThemeModernThemeBundle(),
+            new Lantern\TwigExtBundle\LanternTwigExtBundle(),
             new Lantern\UserBundle\LanternUserBundle(),
-            new Lantern\AdminBundle\LanternAdminBundle(),
+            new Lantern\AppBundle\LanternAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

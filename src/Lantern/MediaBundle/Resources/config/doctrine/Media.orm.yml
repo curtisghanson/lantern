@@ -1,0 +1,24 @@
+Lantern\MediaBundle\Entity\Media:
+    type: entity
+    table: null
+    repositoryClass: Lantern\MediaBundle\Entity\MediaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+        hasFile:
+            type: boolean
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+        serviceIds:
+            type: json_array
+    lifecycleCallbacks: {  }

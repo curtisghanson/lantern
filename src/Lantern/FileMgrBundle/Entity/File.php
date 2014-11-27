@@ -22,7 +22,7 @@ class File
     /**
      * @var string
      */
-    private $realpath;
+    private $realPath;
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class File
     /**
      * @var string
      */
-    private $relativePathname;
+    private $relativePathName;
 
     /**
      * @var integer
@@ -124,26 +124,26 @@ class File
     }
 
     /**
-     * Set realpath
+     * Set realPath
      *
-     * @param string $realpath
+     * @param string $realPath
      * @return File
      */
-    public function setRealpath($realpath)
+    public function setRealPath($realPath)
     {
-        $this->realpath = $realpath;
+        $this->realPath = $realPath;
     
         return $this;
     }
 
     /**
-     * Get realpath
+     * Get realPath
      *
      * @return string 
      */
-    public function getRealpath()
+    public function getRealPath()
     {
-        return $this->realpath;
+        return $this->realPath;
     }
 
     /**
@@ -170,26 +170,26 @@ class File
     }
 
     /**
-     * Set relativePathname
+     * Set relativePathName
      *
-     * @param string $relativePathname
+     * @param string $relativePathName
      * @return File
      */
-    public function setRelativePathname($relativePathname)
+    public function setRelativePathName($relativePathName)
     {
-        $this->relativePathname = $relativePathname;
+        $this->relativePathName = $relativePathName;
     
         return $this;
     }
 
     /**
-     * Get relativePathname
+     * Get relativePathName
      *
      * @return string 
      */
-    public function getRelativePathname()
+    public function getRelativePathName()
     {
-        return $this->relativePathname;
+        return $this->relativePathName;
     }
 
     /**
@@ -422,26 +422,4 @@ class File
         return $this->hash;
     }
 
-    /**
-     * Set metadata
-     *
-     * @param array $metadata
-     * @return File
-     */
-    public function setMetadata($metadata)
-    {
-        $this->metadata = $metadata;
-    
-        return $this;
-    }
-
-    /**
-     * Get metadata
-     *
-     * @return array 
-     */
-    public function getMetadata()
-    {
-        return $this->metadata;
-    }
 }

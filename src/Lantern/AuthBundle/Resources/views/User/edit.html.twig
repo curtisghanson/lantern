@@ -146,28 +146,82 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            {{ form_label(
+                edit_form.groups,
+                'groups'|trans,
+                {'label_attr': {'class': 'col-sm-2 control-label'}}
+            ) }}
+            <div class="col-sm-4">
+                {{ form_widget(
+                    edit_form.groups,
+                    {'attr': {'class': 'form-control'}}
+                ) }}
+                {% if form_errors(edit_form.groups) %}
+                    <span id="helpBlock" class="help-block">
+                        {{ form_errors(edit_form.groups) }}
+                    </span>
+                {% endif %}
+            </div>
+            {{ form_label(
+                edit_form.userRoles,
+                'roles'|trans,
+                {'label_attr': {'class': 'col-sm-2 control-label'}}
+            ) }}
+            <div class="col-sm-4">
+                {{ form_widget(
+                    edit_form.userRoles,
+                    {'attr': {'class': 'form-control'}}
+                ) }}
+                {% if form_errors(edit_form.userRoles) %}
+                    <span id="helpBlock" class="help-block">
+                        {{ form_errors(edit_form.userRoles) }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
                 <div class="checkbox">
+                    {#{{ form_label(edit_form.isLocked, 'is.locked'|trans) }}#}
                     <label>
-                        <input type="checkbox"> Remember me
+                        {{ form_widget(
+                            edit_form.isLocked,
+                            {'attr': {'class': ''}}
+                        ) }}
+                        {{ 'is.locked'|trans }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="checkbox">
+                    {#{{ form_label(edit_form.isLocked, 'is.locked'|trans) }}#}
+                    <label>
+                        {{ form_widget(
+                            edit_form.isActive,
+                            {'attr': {'class': ''}}
+                        ) }}
+                        {{ 'is.active'|trans }}
                     </label>
                 </div>
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Sign in</button>
+            <div class="col-sm-offset-2 col-sm-2">
+                {{ form_widget(edit_form.submit, {
+                    'label': 'update'|trans,
+                    'attr': {'class': 'btn btn-default form-control'}
+                }) }}
+            </div>
+            <div class="col-sm-2">
+                <a href="{{ path('LanternAuthBundle_user_index') }}" class="btn btn-link">{{ 'user.list'|trans }}</a>
             </div>
         </div>
         {{ form_rest(edit_form) }}
     {{ form_end(edit_form) }}
 
     <ul class="record_actions">
-        <li>
-            <a href="{{ path('LanternAuthBundle_user_index') }}">
-                Back to the list
-            </a>
-        </li>
         <li>{{ form(delete_form) }}</li>
     </ul>
 {% endblock contentBody %}

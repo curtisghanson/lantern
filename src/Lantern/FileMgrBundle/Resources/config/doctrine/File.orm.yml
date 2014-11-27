@@ -1,49 +1,100 @@
 Lantern\FileMgrBundle\Entity\File:
-    type: entity
-    table: null
+    type:            entity
+    table:           lantern_file
     repositoryClass: Lantern\FileMgrBundle\Entity\FileRepository
-    fields:
+    id:
         id:
-            type: integer
-            id:   true
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
             generator:
                 strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_file_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
         filename:
-            type:   string
-            length: 255
-        realpath:
-            type: string
-            length: 255
+            column:   filename
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        realPath:
+            column:   real_path
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
         relativePath:
-            type: string
-            length: 255
-        relativePathname:
-            type: string
-            length: 255
+            column:   relative_path
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        relativePathName:
+            column:   relative_path_name
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
         size:
-            type: integer
+            column:   size
+            type:     integer
+            nullable: true
+            unique:   false
         type:
-            type: string
-            length: '16'
-        mimetype:
-            type: string
-            length: '16'
+            column:   type
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
+        mimeType:
+            column:   mime_type
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
         chmod:
-            type: string
-            length: '4'
+            column:   chmod
+            type:     string
+            length:   4
+            nullable: true
+            unique:   false
         chown:
-            type: string
-            length: '16'
+            column:   chown
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
         chgrp:
-            type: string
-            length: '16'
+            column:   chgrp
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
         createdDatetime:
-            type: datetime
+            column:   created_datetime
+            type:     datetime
+            nullable: true
+            unique:   false
         modifiedDatetime:
-            type: datetime
+            column:   modified_datetime
+            type:     datetime
+            nullable: true
+            unique:   false
         lastAccessedDatetime:
-            type: datetime
+            column:   last_accessed_datetime
+            type:     datetime
+            nullable: true
+            unique:   false
         hash:
-            type: string
-            length: 255
+            column:   hash
+            type:     string
+            length:   255
+            nullable: false
+    uniqueConstraints:
+        lantern_file_hash_unique_idx:
+            columns: [ hash ]
     lifecycleCallbacks: {  }

@@ -1,0 +1,7 @@
+parameters:
+#    lantern_media.example.class: Lantern\MediaBundle\Example
+
+services:
+#    lantern_media.example:
+#        class: %lantern_media.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
