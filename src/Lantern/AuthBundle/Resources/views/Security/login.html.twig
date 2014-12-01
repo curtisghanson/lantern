@@ -1,38 +1,173 @@
 {# src/Lantern/AuthBundle/Resources/views/Security/login.html.twig #}
-{% extends 'LanternThemeModernThemeBundle::oneColFullWidth.html.twig' %}
-{% block content %}
-    <div class="modal modal-dark">
-        <form action="{{ path('login_check') }}" method="post" role="form">
-            <div class="modal-heading">
-                <h1>login</h1>
-            </div>
-            <div class="modal-body">
-                {% if error %}
-                    <div class="modal-alert modal-alert-red">
-                        {{ error.message }}
+{% extends '::base.html.twig' %}
+
+{% set doc = {'body': {'attr': {'id': 'login'}}} %}
+
+{% block body %}
+    <header id="header">
+        <div id="logo-group">
+            <span id="logo">
+                {#}<img src="{{ asset('bundles/lanternadmin/img/logo.png') }}" alt="lantern">{#}
+                lantern
+            </span>
+        </div>
+    </div>
+    <div class="pull-right">
+        <div id="hide-menu" class="btn-header pull-right">
+            <span>
+                <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a>
+            </span>
+        </div>
+        <div id="logout" class="btn-header transparent pull-right">
+            <span>
+                <a href="login.html" title="Sign Out"><i class="fa fa-sign-out"></i></a>
+            </span>
+        </div>
+    </div>
+</header>
+<!-- END HEADER -->
+
+    <div id="main" role="main">
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+                    <h1 class="txt-color-red login-header-big">lantern</h1>
+                    <div class="hero">
+                        <div class="pull-left login-desc-box-l">
+                            <h4 class="paragraph-header">lorem ipsum</h4>
+                            <div class="login-app-icons">
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">foo</a>
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">bar</a>
+                            </div>
+                        </div>
+                        <img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
                     </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <h5 class="about-heading">Not just your average template!</h5>
+                            <p>
+                                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ 'log.in'|trans }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-danger">
+                                {{ 'already.logged.in' }}
+                            </div>
+                            <a href="{{ path('LanternAppBundle_index') }}" title="{{ 'return.to.home'|trans }}" class="btn btn-default btn-block">
+                                {{ 'return.to.home'|trans }}
+                            </a>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="#" title="{{ 'switch.user'|trans }}" class="btn btn-link form-control" tabindex="5">
+                                        {{ 'switch.user'|trans }}
+                                    </a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="{{ path('logout') }}" title="{{ 'log.out'|trans }}" class="btn btn-link form-control" tabindex="5">
+                                        {{ 'log.out'|trans }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                {% else %}
+                    <form action="{{ path('login_check') }}" method="post" role="form">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ 'log.in'|trans }}</h3>
+                            </div>
+                            <div class="panel-body">
+                                {% if error %}
+                                    <div class="alert alert-danger">
+                                        {{ error.message }}
+                                    </div>
+                                {% endif %}
+                                <div class="form-group">
+                                    <label for="username" class="flex-item">{{ 'username'|trans }}</label>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" tabindex="1" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="flex-item">{{ 'password'|trans }}</label>
+                                    <input type="password" id="password" name="_password" class="form-control" tabindex="2" />
+                                    <a class="help-block" href="#">{{ 'forgot.password'|trans }}</a>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="remember_me" name="_remember_me" tabindex="4" checked />
+                                        {{ 'remember.me'|trans }}
+                                    </label>
+                                </div>
+                                {#
+                                    If you want to control the URL the user
+                                    is redirected to on success (more details below)
+                                #}
+                                <input type="hidden" name="_target_path" value="/account" />
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <button class="form-control" type="submit" name="login" title="login" tabindex="3">
+                                            {{ 'log.in'|trans }}
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="{{ path('register') }}" title="register" class="btn btn-link form-control" tabindex="5">{{ 'register'|trans }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 {% endif %}
-
-                <div class="form-group">
-                    <label for="username" class="flex-item">username</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="flex-item form-control" tabindex="1" />
+                    <h5 class="text-center"> - Or sign in using -</h5>
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-primary btn-circle">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-info btn-circle">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-warning btn-circle">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+{#}
+    <div class="modal modal-dark">
+            <div class="modal-body">
 
-                <div class="form-group">
-                    <label for="password" class="flex-item">password</label>
-                    <input type="password" id="password" name="_password" class="flex-item form-control" tabindex="2" />
-                </div>
+
 
             </div>
             <div class="modal-footer">
-                {#
-                    If you want to control the URL the user
-                    is redirected to on success (more details below)
-                    <input type="hidden" name="_target_path" value="/account" />
-                #}
-                <button type="submit" name="login" title="login" tabindex="3">login</button>
-                <a href="{{ path('register') }}" title="register" tabindex="4">register</a>
+{#}
+{#}
             </div>
         </form>
     </div>
-{% endblock content %}
+{#}
+{% endblock body %}

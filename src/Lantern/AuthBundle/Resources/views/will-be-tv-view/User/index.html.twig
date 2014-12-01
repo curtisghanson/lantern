@@ -1,0 +1,63 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'user' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'users'|trans %}
+{% set activeItem = 'LanternAuthBundle_user_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+    <table class="table table-bordered table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="select-all" /></th>
+                <th>{{ 'actions'|trans }}</th>
+                <th>{{ 'username'|trans }}</th>
+                <th>{{ 'email'|trans }}</th>
+                <th>{{ 'last.login'|trans }}</th>
+                <th>{{ 'status'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="{{ 'user.actions'|trans }}">
+                        <a href="{{ path('LanternAuthBundle_user_view', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="{{ 'view'|trans }}">
+                            <span class="fa fa-search-plus"></span>
+                        </a>
+                        <a href="{{ path('LanternAuthBundle_user_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="{{ 'edit'|trans }}">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                    </div>
+                </td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td>
+                    {% if entity.lastLogin %}
+                        {{ entity.lastLogin|date('Y-m-d H:i:s') }}
+                    {% else %}
+                        <em class="text-muted">{{ 'no.data.available'|trans }}</em>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if entity.isLocked %}
+                        <span class="label label-warning">{{ 'locked'|trans }}</span>
+                    {% else %}
+                        <span class="label label-success">{{ 'active'|trans }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('LanternAuthBundle_user_new') }}" class="btn btn-default">
+        <span class="fa fa-plus"></span>
+        {{ 'new.user'|trans }}
+    </a>
+{% endblock contentBody %}

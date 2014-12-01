@@ -375,6 +375,37 @@ nav.nav-bar ul.nav-weather li ul li {
     box-shadow:       0 0 48px 8px rgba(255, 255, 255, 0.4);
 }
 
+.modal-dark label {
+    padding: 6px 12px;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    text-shadow: rgba(255,255,255,0.2) 0 0 2px;
+    margin-bottom: 0.6em;
+}
+
+
+.modal-dark input {
+    padding: 6px 12px;
+    font-size: 1.6em;
+    background-color: rgba(0,0,0,0.7);
+    background-image: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,0.2) inset;
+    color: rgba(255,255,255,1);
+    text-shadow: rgba(255,255,255,0.5) 0 0 2px;
+    margin-bottom: 0.6em;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+background-color: rgba(0,0,0,0.2) !important;
+background-image: none !important;
+color: rgba(255,255,255,1) !important;
+}
+
 .tops {
 }
 

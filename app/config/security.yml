@@ -20,6 +20,12 @@ security:
             pattern:    ^/(_profiler|_wdt|css|js|font|ico|img|bundles)
             security:   false
         main:
+            remember_me:
+                key:      "%secret_dos%"
+                lifetime: 31536000
+                path:     /
+                domain:   ~
+            switch_user: { role: ROLE_ALLOWED_TO_SWITCH, parameter: _switch_user }
             pattern:    ^/
             provider:   main
             http_basic: true

@@ -1,0 +1,55 @@
+Lantern\MediaBundle\Entity\Tag:
+    type:            entity
+    table:           lantern_tag
+    repositoryClass: Lantern\MediaBundle\Entity\TagRepository
+    id:
+        id:
+            id:   true
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        shortName:
+            type:     string
+            column:   short_name
+            length:   16
+            nullable: false
+            unique:   false
+        longName:
+            type:     text
+            column:   long_name
+            length:   64
+            nullable: true
+            unique:   false
+        description:
+            type:     text
+            column:   description
+            nullable: true
+            unique:   false
+        display:
+            type:     text
+            column:   display
+            nullable: true
+            unique:   false
+        isEditable:
+            type:     boolean
+            column:   is_editable
+            nullable: true
+            unique:   false
+        createdAt:
+            type:     datetime
+            column:   created_at
+            nullable: false
+            unique:   false
+        updatedAt:
+            type:     datetime
+            column:   updated_at
+            nullable: true
+            unique:   false
+        #parent (fk)
+        #children (fk)
+        #displayType
+        #locale
+        #createdBy
+        #editedBy
+    lifecycleCallbacks: {  }

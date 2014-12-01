@@ -1,0 +1,59 @@
+Lantern\MediaBundle\Entity\Playlist:
+    type:            entity
+    table:           lantern_playlist
+    repositoryClass: Lantern\MediaBundle\Entity\PlaylistRepository
+    id:
+        id:
+            id:   true
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type:     string
+            column:   title
+            length:   255
+            nullable: false
+            unique:   false
+        summary:
+            type:     text
+            column:   summary
+            nullable: true
+            unique:   false
+        description:
+            type:     text
+            column:   description
+            nullable: true
+            unique:   false
+        startDate:
+            type:     datetime
+            column:   start_date
+            nullable: true
+            unique:   false
+        stopDate:
+            type:     datetime
+            column:   stop_date
+            nullable: true
+            unique:   false
+        alternateType:
+            type:     string
+            column:   alternate_type
+            length:   255
+            nullable: true
+            unique:   false
+        createdAt:
+            type:     datetime
+            column:   created_at
+            nullable: false
+            unique:   false
+        updatedAt:
+            type:     datetime
+            column:   updated_at
+            nullable: true
+            unique:   false
+        attributes:
+            type:     json_array
+            column:   attributes
+            nullable: true
+            unique:   false
+    lifecycleCallbacks: {  }

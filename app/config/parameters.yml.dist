@@ -17,7 +17,8 @@ parameters:
 
     # locale and csfr
     locale:            en
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret_uno:        ThisTokenIsNotSoSecretChangeIt
+    secret_dos:        ThisTokenIsNotSoSecretChangeIt
 
     # the following parameters should not be altered
     app_name:          lantern

@@ -1,9 +1,9 @@
-{% extends 'LanternAdminBundle::base.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% set pageIcon = 'user' %}
 {% set pageTitle = 'admin.panel'|trans %}
 {% set pageSubtitle = 'users'|trans %}
-{% set activeItem = 'LanternAuthBundle_user_index' %}
+{% set active = 'LanternAuthBundle_user_index' %}
 
 {% block navBody %}
     {% include 'LanternAdminBundle::nav.html.twig' %}
@@ -33,6 +33,11 @@
                         <a href="{{ path('LanternAuthBundle_user_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="{{ 'edit'|trans }}">
                             <span class="fa fa-pencil"></span>
                         </a>
+                        {% if is_granted('ROLE_ALLOWED_TO_SWITCH') and entity.id != app.user.id %}
+                            <a href="{{ path('homepage', {'_switch_user': entity.username}) }}" class="btn btn-xs btn-default" title="{{ 'impersonate'|trans }}">
+                                <span class="fa fa-eye"></span>
+                            </a>
+                        {% endif %}
                     </div>
                 </td>
                 <td>{{ entity.username }}</td>

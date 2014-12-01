@@ -26,7 +26,8 @@
         "jms/serializer-bundle": "dev-master",
         "phansys/getid3": "2.1.*@dev",
         "pulse00/ffmpeg-bundle": "dev-master",
-        "piwik/device-detector": "dev-master"
+        "piwik/device-detector": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*"
     },
     "scripts": {
         "post-install-cmd": [

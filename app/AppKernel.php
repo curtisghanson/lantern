@@ -15,6 +15,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Lantern\AdminBundle\LanternAdminBundle(),
             new Lantern\AuthBundle\LanternAuthBundle(),
@@ -27,7 +28,7 @@ class AppKernel extends Kernel
             new Lantern\MenuBundle\LanternMenuBundle(),
             new Lantern\Theme\ModernThemeBundle\LanternThemeModernThemeBundle(),
             new Lantern\TwigExtBundle\LanternTwigExtBundle(),
-            new Lantern\UserBundle\LanternUserBundle(),
+            // AppBundle last, depends on all other bundles
             new Lantern\AppBundle\LanternAppBundle(),
         );
 

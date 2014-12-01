@@ -1,0 +1,56 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'certificate' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'roles'|trans %}
+{% set activeItem = 'LanternAuthBundle_role_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+    <pre>{{ dump(hr) }}</pre>
+    <pre>{{ dump(rh) }}</pre>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Shortname</th>
+                <th>Longname</th>
+                <th>Description</th>
+                <th>Isactive</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('LanternAuthBundle_role_view', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.shortName }}</td>
+                <td>{{ entity.longName }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.isActive }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('LanternAuthBundle_role_view', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('LanternAuthBundle_role_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('LanternAuthBundle_role_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

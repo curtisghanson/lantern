@@ -61,10 +61,6 @@ LanternTwigExtBundle:
     resource: "@LanternTwigExtBundle/Resources/config/routing.yml"
     prefix:   /twigext
 
-LanternUserBundle:
-    resource: "@LanternUserBundle/Resources/config/routing.yml"
-    prefix:   /user
-
 LanternAdminBundle:
     resource: "@LanternAdminBundle/Resources/config/routing.yml"
     prefix:   /admin

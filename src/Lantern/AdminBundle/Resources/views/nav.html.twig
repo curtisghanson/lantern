@@ -1,134 +1,312 @@
-{% import _self as li %}
+{% import _self as nav %}
 
-{% if activeItem is not defined %}
-    {% set activeItem = 'LanternAdminBundle_dashboard' %}
+{% if active is not defined %}
+    {% set active = 'LanternAdminBundle_dashboard' %}
 {% endif %}
+
+{% set menu = {
+    'dashboard': {
+        'path': 'LanternAdminBundle_dashboard',
+        'text': 'dashboard',
+        'title': 'dashboard',
+        'icon': 'dashboard'
+    },
+    'security': {
+        'path': '#',
+        'text': 'security',
+        'title': 'security',
+        'icon': 'lock',
+        'child': {
+            'users': {
+                'path': 'LanternAuthBundle_user_index',
+                'text': 'users',
+                'title': 'users',
+                'icon': 'user',
+            },
+            'groups': {
+                'path': 'LanternAuthBundle_group_index',
+                'text': 'groups',
+                'title': 'groups',
+                'icon': 'group',
+            },
+            'roles': {
+                'path': 'LanternAuthBundle_role_index',
+                'text': 'roles',
+                'title': 'roles',
+                'icon': 'certificate',
+            },
+            'permissions': {
+                'path': '#',
+                'text': 'permissions',
+                'title': 'permissions',
+                'icon': 'check',
+            },
+        }
+    },
+    'server': {
+        'path': '#',
+        'text': 'server',
+        'title': 'server',
+        'icon': 'hdd-o',
+        'child': {
+            'settings': {
+                'path': '#',
+                'text': 'settings',
+                'title': 'server.settings',
+                'icon': 'sliders',
+            },
+            'database': {
+                'path': '#',
+                'text': 'database',
+                'title': 'database',
+                'icon': 'database',
+            },
+            'sslproxy': {
+                'path': '#',
+                'text': 'ssl.proxy',
+                'title': 'ssl.and.proxy',
+                'icon': 'lock',
+            },
+            'api': {
+                'path': '#',
+                'text': 'api',
+                'title': 'api',
+                'icon': 'puzzle-piece',
+            },
+            'update': {
+                'path': '#',
+                'text': 'update',
+                'title': 'lantern.update',
+                'icon': 'exclamation',
+            },
+        }
+    },
+    'content': {
+        'path': '#',
+        'text': 'content',
+        'title': 'content',
+        'icon': 'file-o',
+        'child': {
+            'mediatypes': {
+                'path': '#',
+                'text': 'media.types',
+                'title': 'media.types',
+                'icon': '',
+            },
+            'directories': {
+                'path': '#',
+                'text': 'directories',
+                'title': 'directories',
+                'icon': 'folder-o',
+            },
+            'libraries': {
+                'path': '#',
+                'text': 'libraries',
+                'title': 'libraries',
+                'icon': 'folder-o',
+            },
+            'categoriestags': {
+                'path': '#',
+                'text': 'categories.tags',
+                'title': 'categories.and.tags',
+                'icon': 'tags',
+            },
+            'playlists': {
+                'path': '#',
+                'text': 'playlists',
+                'title': 'playlists',
+                'icon': '',
+            },
+            'parentalcontrols': {
+                'path': '#',
+                'text': 'parental.controls',
+                'title': 'parental.controls',
+                'icon': '',
+            },
+        }
+    },
+    'services': {
+        'path': '#',
+        'text': 'services',
+        'title': 'services',
+        'icon': 'cubes',
+        'child': {
+            'cloudstorage': {
+                'path': '#',
+                'text': 'cloud.storage',
+                'title': 'cloud.storage',
+                'icon': 'cloud',
+            },
+            'weather': {
+                'path': '#',
+                'text': 'weather',
+                'title': 'weather',
+                'icon': 'umbrella',
+            },
+            'streaming': {
+                'path': '#',
+                'text': 'streaming',
+                'title': 'streaming',
+                'icon': 'video-camera',
+            },
+            'torrentusenet': {
+                'path': '#',
+                'text': 'torrent.usenet',
+                'title': 'torrent.and.usenet',
+                'icon': 'cloud-download',
+            },
+            'downloaders': {
+                'path': '#',
+                'text': 'downloaders',
+                'title': 'downloaders',
+                'icon': 'download',
+            },
+            'metadata': {
+                'path': '#',
+                'text': 'metadata',
+                'title': 'metadata',
+                'icon': 'code',
+            },
+        }
+    },
+    'schedulingautomation': {
+        'path': '#',
+        'text': 'sched.auto',
+        'title': 'scheduling.and.automation',
+        'icon': 'clock-o',
+        'child': {
+            'scheduling': {
+                'path': '#',
+                'text': 'scheduling',
+                'title': 'scheduling',
+                'icon': 'clock-o',
+            },
+            'automation': {
+                'path': '#',
+                'text': 'automation',
+                'title': 'automation',
+                'icon': 'history',
+            },
+        }
+    },
+    'playback': {
+        'path': '#',
+        'text': 'playback',
+        'title': 'playback',
+        'icon': 'play',
+        'child': {
+            'transcoding': {
+                'path': '#',
+                'text': 'transcoding',
+                'title': 'transcoding',
+                'icon': 'exchange',
+            },
+            'streaming': {
+                'path': '#',
+                'text': 'streaming',
+                'title': 'streaming',
+                'icon': 'play',
+            },
+        }
+    },
+    'display': {
+        'path': '#',
+        'text': 'display',
+        'title': 'display',
+        'icon': 'desktop',
+        'child': {
+            'themes': {
+                'path': '#',
+                'text': 'themes',
+                'title': 'themes',
+                'icon': 'paint-brush',
+            },
+            'menus': {
+                'path': '#',
+                'text': 'menus',
+                'title': 'menus',
+                'icon': 'list',
+            },
+        }
+    },
+    'sharing': {
+        'path': '#',
+        'text': 'sharing',
+        'title': 'sharing',
+        'icon': 'wifi',
+        'child': {
+            'upnpdlna': {
+                'path': '#',
+                'text': 'upnp.dlna',
+                'title': 'upnp.and.dlna',
+                'icon': 'share-alt',
+            },
+            'airplayitunes': {
+                'path': '#',
+                'text': 'airplay.itunes',
+                'title': 'airplay.and.itunes',
+                'icon': 'wifi',
+            },
+            'daap': {
+                'path': '#',
+                'text': 'daap',
+                'title': 'daap',
+                'icon': 'daap',
+            },
+        }
+    },
+    'social': {
+        'path': '#',
+        'text': 'social',
+        'title': 'social.networking',
+        'icon': 'thumbs-up',
+        'child': {
+            'twitter': {
+                'path': '#',
+                'text': 'twitter',
+                'title': 'twitter',
+                'icon': 'twitter',
+            },
+            'facebook': {
+                'path': '#',
+                'text': 'facebook',
+                'title': 'facebook',
+                'icon': 'facebook',
+            },
+            'lastfm': {
+                'path': '#',
+                'text': 'lastfm',
+                'title': 'lastfm',
+                'icon': 'lastfm',
+            },
+        }
+    },
+} %}
 
 <nav>
     <ul>
-        <li{{ li.active(activeItem, 'LanternAdminBundle_dashboard') }}>
-            <a href="{{ path('LanternAdminBundle_dashboard') }}" title="{{ 'dashboard'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
-                <span class="menu-item-parent">{{ 'dashboard'|trans }}</span>
-            </a>
-        </li>
-        <li>
-            <a href="#"  title="{{ 'security'|trans }}">
-                <span class="fa fa-lg fa-fw fa-lock"></span>
-                <span class="menu-item-parent">{{ 'security'|trans }}</span>
-            </a>
-            <ul>
-                <li{{ li.active(activeItem, 'LanternAuthBundle_user_index') }}>
-                    <a href="{{ path('LanternAuthBundle_user_index') }}" title="{{ 'users'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-user"></span>
-                        {{ 'users'|trans }}
-                    </a>
-                </li>
-                <li{{ li.active(activeItem, 'LanternAuthBundle_group_index') }}>
-                    <a href="{{ path('LanternAuthBundle_group_index') }}" title="{{ 'groups'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-group"></span>
-                        {{ 'groups'|trans }}
-                    </a>
-                </li>
-               <li{{ li.active(activeItem, 'LanternAuthBundle_role_index') }}>
-                    <a href="{{ path('LanternAuthBundle_role_index') }}" title="{{ 'roles'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-certificate"></span>
-                        {{ 'roles'|trans }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#" title="{{ 'server'|trans }}">
-                <span class="fa fa-lg fa-fw fa-sliders"></span>
-                <span class="menu-item-parent">{{ 'server'|trans }}</span>
-            </a>
-            <ul>
-                <li>
-                    <a href="#" title="{{ 'general'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-user"></span>
-                        {{ 'general'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'ssl.and.proxy'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-key"></span>
-                        {{ 'ssl.and.proxy'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'api'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-puzzle-piece"></span>
-                        {{ 'api'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'update'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-exclamation"></span>
-                        {{ 'update'|trans }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#" title="{{ 'content'|trans }}">
-                <span class="fa fa-lg fa-fw fa-file-o"></span>
-                <span class="menu-item-parent">{{ 'content'|trans }}</span>
-            </a>
-            <ul>
-                <li>
-                    <a href="#" title="{{ 'libraries'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-hdd-o"></span>
-                        {{ 'libraries'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'directories'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-foler-o"></span>
-                        {{ 'directories'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'api'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-puzzle-piece"></span>
-                        {{ 'api'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'update'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-user"></span>
-                        {{ 'update'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#" title="{{ 'database'|trans }}">
-                        <span class="fa fa-lg fa-fw fa-user"></span>
-                        {{ 'database'|trans }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#" title="{{ 'services'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
-                <span class="menu-item-parent">{{ 'services'|trans }}</span>
-            </a>
-        </li>
+        {{ nav.build(menu, active) }}
+    </ul>
+</nav>
+
+{#}
+<nav>
+    <ul>
         <li>
             <a href="#" title="{{ 'dlna'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="fa fa-lg fa-fw fa-wifi"></span>
                 <span class="menu-item-parent">{{ 'dlna'|trans }}</span>
             </a>
         </li>
         <li>
             <a href="#" title="{{ 'transcoding'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="fa fa-lg fa-fw fa-exchange"></span>
                 <span class="menu-item-parent">{{ 'transcoding'|trans }}</span>
             </a>
         </li>
         <li>
             <a href="#" title="{{ 'metadata.providers'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="fa fa-lg fa-fw fa-code"></span>
                 <span class="menu-item-parent">{{ 'metadata.providers'|trans }}</span>
             </a>
         </li>
@@ -158,19 +336,38 @@
         </li>
         <li>
             <a href="#" title="{{ 'party'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="fa fa-lg fa-fw fa-birthday-cake"></span>
                 <span class="menu-item-parent">{{ 'party'|trans }}</span>
             </a>
         </li>
         <li>
             <a href="#" title="{{ 'social'|trans }}">
-                <span class="fa fa-lg fa-fw fa-dashboard"></span>
+                <span class="fa fa-lg fa-fw fa-thumbs-up"></span>
                 <span class="menu-item-parent">{{ 'social'|trans }}</span>
             </a>
         </li>
     </ul>
 </nav>
+{#}
 
-{% macro active(activeItem, route) %}
-    {{ activeItem == route ? ' class="active"' : '' }}
+{% macro build(menu, active) %}
+    {% import _self as nav %}
+    {% for item in menu %}
+        {% if item.path == '#' %}
+            {% set path = '#' %}
+        {% else %}
+            {% set path = path(item.path) %}
+        {% endif %}
+        <li{{ active == item.path ? ' class="active"' : '' }}>
+            <a href="{{ path }}" title="{{ item.title|trans }}">
+                <span class="fa fa-lg fa-fw fa-{{ item.icon }}"></span>
+                <span class="menu-item-parent">{{ item.text|trans }}</span>
+            </a>
+            {% if item.child is defined %}
+                <ul>
+                    {{ nav.build(item.child, active) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
 {% endmacro %}

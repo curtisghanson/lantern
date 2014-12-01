@@ -1,0 +1,25 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'group' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'edit.group'|trans %}
+{% set activeItem = 'LanternAuthBundle_group_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+    <h1>Group edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('LanternAuthBundle_group_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock contentBody %}

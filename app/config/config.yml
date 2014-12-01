@@ -6,7 +6,7 @@ imports:
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
-    secret:          %secret%
+    secret:          %secret_uno%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
@@ -55,6 +55,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        resolve_target_entities:
+            Lantern\MediaBundle\Model\UserSubjectInterface: Lantern\AuthBundle\Entity\User
+            Lantern\MediaBundle\Model\FileSubjectInterface: Lantern\FileMgrBundle\Entity\File
 
 # Swiftmailer Configuration
 swiftmailer:

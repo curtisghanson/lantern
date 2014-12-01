@@ -1,0 +1,76 @@
+Lantern\MediaBundle\Entity\Media:
+    type:            entity
+    table:           lantern_media_collection
+    repositoryClass: Lantern\MediaBundle\Entity\MediaCollectionRepository
+    id:
+        id:
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_media_collection_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
+        title:
+            type:      string
+            column:    title
+            length:    255
+            nullable:  false
+            unique:    false
+        summary:
+            type:      text
+            column:    summary
+            nullable:  true
+            unique:    false
+        description:
+            type:      text
+            column:    description
+            nullable:  true
+            unique:    false
+        mediaOrder:
+            type:      integer
+            column:    media_order
+            nullable:  false
+        createdAt:
+            type:      datetime
+            column:    created_at
+            nullable:  false
+            unique:    false
+        updatedAt:
+            type:      datetime
+            column:    updated_at
+            nullable:  true
+            unique:    false
+    uniqueConstraints:
+        lantern_media_collection_media_collection_unique_idx:
+            columns: [ media, collection ]
+        lantern_media_collection_collection_media_order_unique_idx:
+            columns: [ collection, media_order ]
+    manyToOne:
+        media:
+            targetEntity: Media
+            inversedBy:   collection
+            joinColumn:
+                name:                 media
+                referencedColumnName: id
+        collection:
+            targetEntity: Collection
+            inversedBy:   media
+            joinColumn:
+                name:                 collection
+                referencedColumnName: id
+        createdBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 created_by
+                referencedColumnName: id
+        updatedBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 updated_by
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

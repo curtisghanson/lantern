@@ -1,24 +1,110 @@
 Lantern\MediaBundle\Entity\Media:
-    type: entity
-    table: null
+    type:            entity
+    table:           lantern_media
     repositoryClass: Lantern\MediaBundle\Entity\MediaRepository
-    fields:
+    id:
         id:
-            type: integer
-            id: true
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
             generator:
                 strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_media_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
         title:
-            type: string
-            length: 255
+            type:      string
+            column:    title
+            length:    255
+            nullable:  false
+            unique:    false
+        summary:
+            type:      text
+            column:    summary
+            nullable:  true
+            unique:    false
         description:
-            type: text
+            type:      text
+            column:    description
+            nullable:  true
+            unique:    false
+        releaseDate:
+            type:      datetime
+            column:    release_date
+            nullable:  true
+            unique:    false
+        mediaType:
+            type:      string
+            column:    media_type
+            length:    255
+            nullable:  false
+            unique:    true
+        alternateType:
+            type:      string
+            column:    alternate_type
+            length:    255
+            nullable:  true
+            unique:    false
         hasFile:
-            type: boolean
+            type:      boolean
+            column:    has_file
+            nullable:  true
+            unique:    false
+        avgRating:
+            type:      float
+            column:    avg_rating
+            scale:     0
+            precision: 2
+            nullable:  true
+            unique:    false
+            options:
+                comment: "Ratings are stored with decimals but are translated besed on system/user locale settings."
+        locale:
+            type:      string
+            column:    locale
+            length:    16
+            nullable:  true
+            unique:    false
         createdAt:
-            type: datetime
+            type:      datetime
+            column:    created_at
+            nullable:  false
+            unique:    false
         updatedAt:
-            type: datetime
-        serviceIds:
-            type: json_array
+            type:      datetime
+            column:    updated_at
+            nullable:  true
+            unique:    false
+        attributes:
+            type:      json_array
+            column:    attributes
+            nullable:  true
+            unique:    false
+    #uniqueConstraints:
+    #    lantern_collection_TBD_unique_idx:
+    #        columns: [ TBD ]
+    oneToMany:
+        collection:
+            targetEntity: MediaCollection
+            mappedBy:     media
+    manyToOne:
+        parent:
+            targetEntity: Collection
+            inversedBy:   children
+            joinColumn:
+                name:                 parent
+                referencedColumnName: id
+        createdBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 created_by
+                referencedColumnName: id
+        updatedBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 updated_by
+                referencedColumnName: id
     lifecycleCallbacks: {  }

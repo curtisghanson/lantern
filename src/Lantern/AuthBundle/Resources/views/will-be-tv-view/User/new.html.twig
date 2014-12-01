@@ -1,0 +1,23 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'user' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'new.user'|trans %}
+{% set activeItem = 'LanternAuthBundle_user_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('LanternAuthBundle_user_index') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock contentBody %}

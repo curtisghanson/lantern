@@ -1,0 +1,52 @@
+{% extends 'LanternAdminBundle::base.html.twig' %}
+
+{% set pageIcon = 'certificate' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'view.role'|trans %}
+{% set activeItem = 'LanternAuthBundle_role_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody -%}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Shortname</th>
+                <td>{{ entity.shortName }}</td>
+            </tr>
+            <tr>
+                <th>Longname</th>
+                <td>{{ entity.longName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Isactive</th>
+                <td>{{ entity.isActive }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('LanternAuthBundle_role_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('LanternAuthBundle_role_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock contentBody %}
