@@ -1,0 +1,30 @@
+LanternMediaBundle_tag_index:
+    path:     /
+    defaults: { _controller: "LanternMediaBundle:Tag:index" }
+
+LanternMediaBundle_tag_show:
+    path:     /{id}/show
+    defaults: { _controller: "LanternMediaBundle:Tag:show" }
+
+LanternMediaBundle_tag_new:
+    path:     /new
+    defaults: { _controller: "LanternMediaBundle:Tag:new" }
+
+LanternMediaBundle_tag_create:
+    path:     /create
+    defaults: { _controller: "LanternMediaBundle:Tag:create" }
+    requirements: { _method: post }
+
+LanternMediaBundle_tag_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LanternMediaBundle:Tag:edit" }
+
+LanternMediaBundle_tag_update:
+    path:     /{id}/update
+    defaults: { _controller: "LanternMediaBundle:Tag:update" }
+    requirements: { _method: post|put }
+
+LanternMediaBundle_tag_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LanternMediaBundle:Tag:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% set pageIcon = 'files-o' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'collection'|trans %}
+{% set active = 'LanternMediaBundle_collection_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <h1>Collection creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('LanternMediaBundle_collection_index') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock contentBody %}

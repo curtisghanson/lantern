@@ -1,0 +1,30 @@
+LanternMediaBundle_media_index:
+    path:     /
+    defaults: { _controller: "LanternMediaBundle:Media:index" }
+
+LanternMediaBundle_media_show:
+    path:     /{id}/show
+    defaults: { _controller: "LanternMediaBundle:Media:show" }
+
+LanternMediaBundle_media_new:
+    path:     /new
+    defaults: { _controller: "LanternMediaBundle:Media:new" }
+
+LanternMediaBundle_media_create:
+    path:     /create
+    defaults: { _controller: "LanternMediaBundle:Media:create" }
+    requirements: { _method: post }
+
+LanternMediaBundle_media_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LanternMediaBundle:Media:edit" }
+
+LanternMediaBundle_media_update:
+    path:     /{id}/update
+    defaults: { _controller: "LanternMediaBundle:Media:update" }
+    requirements: { _method: post|put }
+
+LanternMediaBundle_media_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LanternMediaBundle:Media:delete" }
+    requirements: { _method: post|delete }

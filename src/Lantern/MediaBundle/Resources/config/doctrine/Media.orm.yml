@@ -42,12 +42,6 @@ Lantern\MediaBundle\Entity\Media:
             length:    255
             nullable:  false
             unique:    true
-        alternateType:
-            type:      string
-            column:    alternate_type
-            length:    255
-            nullable:  true
-            unique:    false
         hasFile:
             type:      boolean
             column:    has_file
@@ -89,6 +83,9 @@ Lantern\MediaBundle\Entity\Media:
     oneToMany:
         collection:
             targetEntity: MediaCollection
+            mappedBy:     media
+        tag:
+            targetEntity: MediaTag
             mappedBy:     media
     manyToOne:
         parent:

@@ -5,9 +5,9 @@ namespace Lantern\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Media
+ * Collection
  */
-class Media
+class Collection
 {
     /**
      * @var integer
@@ -30,24 +30,29 @@ class Media
     private $description;
 
     /**
-     * @var \DateTime
-     */
-    private $releaseDate;
-
-    /**
      * @var string
      */
-    private $mediaType;
+    private $collectionType;
 
     /**
-     * @var boolean
+     * @var \DateTime
      */
-    private $hasFile;
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $stopDate;
 
     /**
      * @var float
      */
     private $avgRating;
+
+    /**
+     * @var integer
+     */
+    private $childOrder;
 
     /**
      * @var string
@@ -72,7 +77,12 @@ class Media
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $collection;
+    private $children;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $media;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -99,7 +109,8 @@ class Media
      */
     public function __construct()
     {
-        $this->collection = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->media = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -117,7 +128,7 @@ class Media
      * Set title
      *
      * @param string $title
-     * @return Media
+     * @return Collection
      */
     public function setTitle($title)
     {
@@ -140,7 +151,7 @@ class Media
      * Set summary
      *
      * @param string $summary
-     * @return Media
+     * @return Collection
      */
     public function setSummary($summary)
     {
@@ -163,7 +174,7 @@ class Media
      * Set description
      *
      * @param string $description
-     * @return Media
+     * @return Collection
      */
     public function setDescription($description)
     {
@@ -183,79 +194,79 @@ class Media
     }
 
     /**
-     * Set releaseDate
+     * Set collectionType
      *
-     * @param \DateTime $releaseDate
-     * @return Media
+     * @param string $collectionType
+     * @return Collection
      */
-    public function setReleaseDate($releaseDate)
+    public function setCollectionType($collectionType)
     {
-        $this->releaseDate = $releaseDate;
+        $this->collectionType = $collectionType;
     
         return $this;
     }
 
     /**
-     * Get releaseDate
-     *
-     * @return \DateTime 
-     */
-    public function getReleaseDate()
-    {
-        return $this->releaseDate;
-    }
-
-    /**
-     * Set mediaType
-     *
-     * @param string $mediaType
-     * @return Media
-     */
-    public function setMediaType($mediaType)
-    {
-        $this->mediaType = $mediaType;
-    
-        return $this;
-    }
-
-    /**
-     * Get mediaType
+     * Get collectionType
      *
      * @return string 
      */
-    public function getMediaType()
+    public function getCollectionType()
     {
-        return $this->mediaType;
+        return $this->collectionType;
     }
 
     /**
-     * Set hasFile
+     * Set startDate
      *
-     * @param boolean $hasFile
-     * @return Media
+     * @param \DateTime $startDate
+     * @return Collection
      */
-    public function setHasFile($hasFile)
+    public function setStartDate($startDate)
     {
-        $this->hasFile = $hasFile;
+        $this->startDate = $startDate;
     
         return $this;
     }
 
     /**
-     * Get hasFile
+     * Get startDate
      *
-     * @return boolean 
+     * @return \DateTime 
      */
-    public function getHasFile()
+    public function getStartDate()
     {
-        return $this->hasFile;
+        return $this->startDate;
+    }
+
+    /**
+     * Set stopDate
+     *
+     * @param \DateTime $stopDate
+     * @return Collection
+     */
+    public function setStopDate($stopDate)
+    {
+        $this->stopDate = $stopDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get stopDate
+     *
+     * @return \DateTime 
+     */
+    public function getStopDate()
+    {
+        return $this->stopDate;
     }
 
     /**
      * Set avgRating
      *
      * @param float $avgRating
-     * @return Media
+     * @return Collection
      */
     public function setAvgRating($avgRating)
     {
@@ -275,10 +286,33 @@ class Media
     }
 
     /**
+     * Set childOrder
+     *
+     * @param integer $childOrder
+     * @return Collection
+     */
+    public function setChildOrder($childOrder)
+    {
+        $this->childOrder = $childOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Get childOrder
+     *
+     * @return integer 
+     */
+    public function getChildOrder()
+    {
+        return $this->childOrder;
+    }
+
+    /**
      * Set locale
      *
      * @param string $locale
-     * @return Media
+     * @return Collection
      */
     public function setLocale($locale)
     {
@@ -301,7 +335,7 @@ class Media
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Media
+     * @return Collection
      */
     public function setCreatedAt($createdAt)
     {
@@ -324,7 +358,7 @@ class Media
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Media
+     * @return Collection
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -347,7 +381,7 @@ class Media
      * Set attributes
      *
      * @param array $attributes
-     * @return Media
+     * @return Collection
      */
     public function setAttributes($attributes)
     {
@@ -367,45 +401,78 @@ class Media
     }
 
     /**
-     * Add collection
+     * Add children
      *
-     * @param \Lantern\MediaBundle\Entity\MediaCollection $collection
-     * @return Media
+     * @param \Lantern\MediaBundle\Entity\Collection $children
+     * @return Collection
      */
-    public function addCollection(\Lantern\MediaBundle\Entity\MediaCollection $collection)
+    public function addChildren(\Lantern\MediaBundle\Entity\Collection $children)
     {
-        $this->collection[] = $collection;
+        $this->children[] = $children;
     
         return $this;
     }
 
     /**
-     * Remove collection
+     * Remove children
      *
-     * @param \Lantern\MediaBundle\Entity\MediaCollection $collection
+     * @param \Lantern\MediaBundle\Entity\Collection $children
      */
-    public function removeCollection(\Lantern\MediaBundle\Entity\MediaCollection $collection)
+    public function removeChildren(\Lantern\MediaBundle\Entity\Collection $children)
     {
-        $this->collection->removeElement($collection);
+        $this->children->removeElement($children);
     }
 
     /**
-     * Get collection
+     * Get children
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCollection()
+    public function getChildren()
     {
-        return $this->collection;
+        return $this->children;
+    }
+
+    /**
+     * Add media
+     *
+     * @param \Lantern\MediaBundle\Entity\MediaCollection $media
+     * @return Collection
+     */
+    public function addMedia(\Lantern\MediaBundle\Entity\MediaCollection $media)
+    {
+        $this->media[] = $media;
+    
+        return $this;
+    }
+
+    /**
+     * Remove media
+     *
+     * @param \Lantern\MediaBundle\Entity\MediaCollection $media
+     */
+    public function removeMedia(\Lantern\MediaBundle\Entity\MediaCollection $media)
+    {
+        $this->media->removeElement($media);
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 
     /**
      * Add tag
      *
-     * @param \Lantern\MediaBundle\Entity\MediaTag $tag
-     * @return Media
+     * @param \Lantern\MediaBundle\Entity\CollectionTag $tag
+     * @return Collection
      */
-    public function addTag(\Lantern\MediaBundle\Entity\MediaTag $tag)
+    public function addTag(\Lantern\MediaBundle\Entity\CollectionTag $tag)
     {
         $this->tag[] = $tag;
     
@@ -415,9 +482,9 @@ class Media
     /**
      * Remove tag
      *
-     * @param \Lantern\MediaBundle\Entity\MediaTag $tag
+     * @param \Lantern\MediaBundle\Entity\CollectionTag $tag
      */
-    public function removeTag(\Lantern\MediaBundle\Entity\MediaTag $tag)
+    public function removeTag(\Lantern\MediaBundle\Entity\CollectionTag $tag)
     {
         $this->tag->removeElement($tag);
     }
@@ -436,7 +503,7 @@ class Media
      * Set parent
      *
      * @param \Lantern\MediaBundle\Entity\Collection $parent
-     * @return Media
+     * @return Collection
      */
     public function setParent(\Lantern\MediaBundle\Entity\Collection $parent = null)
     {
@@ -459,7 +526,7 @@ class Media
      * Set createdBy
      *
      * @param \Lantern\AuthBundle\Entity\User $createdBy
-     * @return Media
+     * @return Collection
      */
     public function setCreatedBy(\Lantern\AuthBundle\Entity\User $createdBy = null)
     {
@@ -482,7 +549,7 @@ class Media
      * Set updatedBy
      *
      * @param \Lantern\AuthBundle\Entity\User $updatedBy
-     * @return Media
+     * @return Collection
      */
     public function setUpdatedBy(\Lantern\AuthBundle\Entity\User $updatedBy = null)
     {

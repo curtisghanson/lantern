@@ -4,10 +4,16 @@ Lantern\MediaBundle\Entity\Playlist:
     repositoryClass: Lantern\MediaBundle\Entity\PlaylistRepository
     id:
         id:
-            id:   true
-            type: integer
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
             generator:
                 strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_playlist_id_seq
+                initialValue:   1
+                allocationSize: 1
     fields:
         title:
             type:     string

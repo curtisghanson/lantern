@@ -1,3 +1,15 @@
-lantern_media_homepage:
-    path:     /hello/{name}
+LanternMediaBundle_index:
+    path:     /
     defaults: { _controller: LanternMediaBundle:Default:index }
+
+LanternMediaBundle_collection:
+    resource: "@LanternMediaBundle/Resources/config/routing/collection.yml"
+    prefix:   /admin/collection
+
+LanternMediaBundle_media:
+    resource: "@LanternMediaBundle/Resources/config/routing/media.yml"
+    prefix:   /admin/media
+
+LanternMediaBundle_tag:
+    resource: "@LanternMediaBundle/Resources/config/routing/tag.yml"
+    prefix:   /admin/tag

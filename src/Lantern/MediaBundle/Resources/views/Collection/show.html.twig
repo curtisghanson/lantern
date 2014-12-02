@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+{% set pageIcon = 'files-o' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'collection'|trans %}
+{% set active = 'LanternMediaBundle_collection_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <h1>Collection</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ entity.summary }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Collectiontype</th>
+                <td>{{ entity.collectionType }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{{ entity.startDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Stopdate</th>
+                <td>{{ entity.stopDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Avgrating</th>
+                <td>{{ entity.avgRating }}</td>
+            </tr>
+            <tr>
+                <th>Childorder</th>
+                <td>{{ entity.childOrder }}</td>
+            </tr>
+            <tr>
+                <th>Locale</th>
+                <td>{{ entity.locale }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Attributes</th>
+                <td>{{ entity.attributes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('LanternMediaBundle_collection_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('LanternMediaBundle_collection_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock contentbody %}

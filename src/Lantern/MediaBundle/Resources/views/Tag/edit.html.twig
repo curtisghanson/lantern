@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% set pageIcon = 'tags' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'tags'|trans %}
+{% set active = 'LanternMediaBundle_tag_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <h1>Tag edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('LanternMediaBundle_tag_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock contentBody %}

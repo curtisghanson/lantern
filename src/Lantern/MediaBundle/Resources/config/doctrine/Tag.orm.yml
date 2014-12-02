@@ -4,10 +4,16 @@ Lantern\MediaBundle\Entity\Tag:
     repositoryClass: Lantern\MediaBundle\Entity\TagRepository
     id:
         id:
-            id:   true
-            type: integer
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
             generator:
                 strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_tag_id_seq
+                initialValue:   1
+                allocationSize: 1
     fields:
         shortName:
             type:     string
@@ -24,6 +30,18 @@ Lantern\MediaBundle\Entity\Tag:
         description:
             type:     text
             column:   description
+            nullable: true
+            unique:   false
+        locale:
+            type:     string
+            column:   locale
+            length:   16
+            length:   true
+            unique:   false
+        displayType:
+            type:     string
+            column:   display_type
+            length:   16
             nullable: true
             unique:   false
         display:
@@ -46,10 +64,31 @@ Lantern\MediaBundle\Entity\Tag:
             column:   updated_at
             nullable: true
             unique:   false
-        #parent (fk)
-        #children (fk)
-        #displayType
-        #locale
-        #createdBy
-        #editedBy
+    uniqueConstraints:
+        lantern_tag_short_name_locale_unique_idx:
+            columns: [ short_name, locale ]
+    oneToMany:
+        tagTagA:
+            targetEntity: TagTag
+            mappedBy:     tagA
+        tagTagZ:
+            targetEntity: TagTag
+            mappedBy:     tagZ
+        media:
+            targetEntity: MediaTag
+            mappedBy:     tag
+        collection:
+            targetEntity: CollectionTag
+            mappedBy:     tag
+    manyToOne:
+        createdBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 created_by
+                referencedColumnName: id
+        updatedBy:
+            targetEntity: Lantern\MediaBundle\Model\UserSubjectInterface
+            joinColumn:
+                name:                 updated_by
+                referencedColumnName: id
     lifecycleCallbacks: {  }

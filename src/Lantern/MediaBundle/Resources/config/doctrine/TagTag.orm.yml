@@ -1,0 +1,76 @@
+Lantern\MediaBundle\Entity\TagTag:
+    type:            entity
+    table:           lantern_tag_tag
+    repositoryClass: Lantern\MediaBundle\Entity\TagTagRepository
+    id:
+        id:
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_tag_tag_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
+        description:
+            type:     text
+            column:   description
+            nullable: true
+            unique:   false
+        vector:
+            type:      float
+            column:    vector
+            scale:     0
+            precision: 2
+            nullable:  false
+            unique:    false
+            options:
+                comment: "Vectors are stored with decimals but are translated besed on system/user locale settings."
+        aLevel:
+            type:     integer
+            column:   a_level
+            nullable: false
+            unique:   false
+        zLevel:
+            type:     integer
+            column:   z_level
+            nullable: false
+            unique:   false
+        relationship:
+            type:     string
+            column:   relationship
+            length:   16
+            nullable: false
+            unique:   false
+        isEditable:
+            type:     boolean
+            column:   is_editable
+            nullable: true
+            unique:   false
+        createdAt:
+            type:     datetime
+            column:   created_at
+            nullable: false
+            unique:   false
+        updatedAt:
+            type:     datetime
+            column:   updated_at
+            nullable: true
+            unique:   false
+    manyToOne:
+        tagA:
+            targetEntity: Tag
+            inversedBy:   tagTagA
+            joinColumn:
+                name:                 tag_a
+                referencedColumnName: id
+        tagZ:
+            targetEntity: Tag
+            inversedBy:   tagTagZ
+            joinColumn:
+                name:                 tag_z
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

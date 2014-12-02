@@ -1,4 +1,4 @@
-Lantern\MediaBundle\Entity\Media:
+Lantern\MediaBundle\Entity\MediaCollection:
     type:            entity
     table:           lantern_media_collection
     repositoryClass: Lantern\MediaBundle\Entity\MediaCollectionRepository

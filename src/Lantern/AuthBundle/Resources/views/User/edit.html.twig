@@ -9,7 +9,7 @@
     {% include 'LanternAdminBundle::nav.html.twig' %}
 {% endblock navBody %}
 
-{% block contentBody -%}
+{% block contentBody %}
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
         {{ form_errors(edit_form) }}
         <div class="form-group">

@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% set pageIcon = 'file-o' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'media'|trans %}
+{% set active = 'LanternMediaBundle_media_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <h1>Media list</h1>
+
+    <table class="table table-bordered table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="select-all" /></th>
+                <th>{{ 'actions'|trans }}</th>
+                <th>{{'title'}}</th>
+                <th>{{'release.date'}}</th>
+                <th>{{'media.type'}}</th>
+                <th>{{'has.file'}}</th>
+                <th>{{'avg.rating'}}</th>
+                <th>{{'locale'}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('LanternMediaBundle_media_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('LanternMediaBundle_media_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                    <a href="{{ path('LanternMediaBundle_media_show', { 'id': entity.id }) }}">view</a>
+                </td>
+                <td>{{ entity.title }}</td>
+                <td>{% if entity.releaseDate %}{{ entity.releaseDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.mediaType }}</td>
+                <td>{{ entity.hasFile }}</td>
+                <td>{{ entity.avgRating }}</td>
+                <td>{{ entity.locale }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="9"><em class="text-muted">{{ 'no.media.found'|trans }}</em></td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('LanternMediaBundle_media_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock contentBody %}

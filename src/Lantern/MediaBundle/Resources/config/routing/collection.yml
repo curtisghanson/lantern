@@ -1,0 +1,30 @@
+LanternMediaBundle_collection_index:
+    path:     /
+    defaults: { _controller: "LanternMediaBundle:Collection:index" }
+
+LanternMediaBundle_collection_show:
+    path:     /{id}/show
+    defaults: { _controller: "LanternMediaBundle:Collection:show" }
+
+LanternMediaBundle_collection_new:
+    path:     /new
+    defaults: { _controller: "LanternMediaBundle:Collection:new" }
+
+LanternMediaBundle_collection_create:
+    path:     /create
+    defaults: { _controller: "LanternMediaBundle:Collection:create" }
+    requirements: { _method: post }
+
+LanternMediaBundle_collection_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LanternMediaBundle:Collection:edit" }
+
+LanternMediaBundle_collection_update:
+    path:     /{id}/update
+    defaults: { _controller: "LanternMediaBundle:Collection:update" }
+    requirements: { _method: post|put }
+
+LanternMediaBundle_collection_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LanternMediaBundle:Collection:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,55 @@
+Lantern\MediaBundle\Entity\MediaTag:
+    type:            entity
+    table:           lantern_media_tag
+    repositoryClass: Lantern\MediaBundle\Entity\MediaTagRepository
+    id:
+        id:
+            id:       true
+            type:     integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: AUTO
+            sequenceGenerator:
+                sequenceName:   lantern_media_tag_id_seq
+                initialValue:   1
+                allocationSize: 1
+    fields:
+        vector:
+            type:      float
+            column:    vector
+            scale:     0
+            precision: 2
+            nullable:  false
+            unique:    false
+            options:
+                comment: "Vectors are stored with decimals but are translated besed on system/user locale settings."
+        isEditable:
+            type:      boolean
+            column:    is_editable
+            nullable:  true
+            unique:    false
+        createdAt:
+            type:      datetime
+            column:    created_at
+            nullable:  false
+            unique:    false
+        updatedAt:
+            type:      datetime
+            column:    updated_at
+            nullable:  true
+            unique:    false
+    manyToOne:
+        media:
+            targetEntity: Media
+            inversedBy:   tag
+            joinColumn:
+                name:                 media
+                referencedColumnName: id
+        tag:
+            targetEntity: Tag
+            inversedBy:   media
+            joinColumn:
+                name:                 tag
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

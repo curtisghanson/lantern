@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% set pageIcon = 'files-o' %}
+{% set pageTitle = 'admin.panel'|trans %}
+{% set pageSubtitle = 'collection'|trans %}
+{% set active = 'LanternMediaBundle_collection_index' %}
+
+{% block navBody %}
+    {% include 'LanternAdminBundle::nav.html.twig' %}
+{% endblock navBody %}
+
+{% block contentBody %}
+    <h1>Collection list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>Collectiontype</th>
+                <th>Startdate</th>
+                <th>Stopdate</th>
+                <th>Avgrating</th>
+                <th>Childorder</th>
+                <th>Locale</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Attributes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('LanternMediaBundle_collection_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.summary }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.collectionType }}</td>
+                <td>{% if entity.startDate %}{{ entity.startDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.stopDate %}{{ entity.stopDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.avgRating }}</td>
+                <td>{{ entity.childOrder }}</td>
+                <td>{{ entity.locale }}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.attributes }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('LanternMediaBundle_collection_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('LanternMediaBundle_collection_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('LanternMediaBundle_collection_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock contentBody %}
