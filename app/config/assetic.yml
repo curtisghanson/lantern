@@ -16,16 +16,16 @@ assetic:
             node_paths: [%node_modules_path%]
             apply_to:   "\.less$"
     assets:
-        jquery:
+        jquery_js:
             inputs:
                 - '@LanternExtLibBundle/Resources/public/bower_components/jquery/dist/jquery.js'
             options:
                 version:    2.1.1
                 updated_at: 2014-11-25
                 updated_by: curtisghanson@gmail.com
-        jqueryui:
+        jqueryui_js:
             inputs:
-               - '@LanternExtLibBundle/Resources/public/bower_components/jquery.ui/dist/jquery-ui.js'
+                - '@LanternExtLibBundle/Resources/public/bower_components/jquery.ui/dist/jquery-ui.js'
             options:
                 version:    1.11.2
                 updated_at: 2014-11-25
@@ -45,26 +45,34 @@ assetic:
                 updated_at: 2014-11-25
                 updated_by: curtisghanson@gmail.com
         fontawesome_less:
-           inputs:
-              - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/less/font-awesome.less'
-           options:
-               version:    4.2.0
-               updated_at: 2014-11-25
-               updated_by: curtisghanson@gmail.com
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/less/font-awesome.less'
+            options:
+                version:    4.2.0
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
         fontawesome_font:
-           inputs:
-              - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/fonts/*'
-           options:
-               version:    4.2.0
-               updated_at: 2014-11-25
-               updated_by: curtisghanson@gmail.com
-        modernizr:
-           inputs:
-              - '@LanternExtLibBundle/Resources/public/bower_components/modernizr/modernizr.js'
-           options:
-               version:    2.8.3
-               updated_at: 2014-11-25
-               updated_by: curtisghanson@gmail.com
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/fontawesome/fonts/*'
+            options:
+                version:    4.2.0
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        modernizr_js:
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/modernizr/modernizr.js'
+            options:
+                version:    2.8.3
+                updated_at: 2014-11-25
+                updated_by: curtisghanson@gmail.com
+        jqueryfileupload_js:
+            inputs:
+                - '@LanternExtLibBundle/Resources/public/bower_components/jquery-file-upload/js/jquery.iframe-transport.js'
+                - '@LanternExtLibBundle/Resources/public/bower_components/jquery-file-upload/js/jquery.fileupload.js'
+            options:
+                version:    5.42.0
+                updated_at: 2014-12-01
+                updated_by: curtisghanson@gmail.com
         lanternadmin_less:
            inputs:
               - '@LanternAdminBundle/Resources/public/less/lanternadmin.less'

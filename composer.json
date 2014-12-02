@@ -11,6 +11,7 @@
         "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
@@ -24,10 +25,11 @@
         "phpunit/phpunit": "3.7.*",
         "jms/security-extra-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
+        "oneup/uploader-bundle": "~1.3",
         "phansys/getid3": "2.1.*@dev",
-        "pulse00/ffmpeg-bundle": "dev-master",
         "piwik/device-detector": "dev-master",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*"
+        "pulse00/ffmpeg-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "~1.1@dev"
     },
     "scripts": {
         "post-install-cmd": [

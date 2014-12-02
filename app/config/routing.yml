@@ -23,6 +23,11 @@ create:
     path:     /create
     defaults: { _controller: LanternAuthBundle:Security:create }
 
+# OneUp Uploader Routes
+oneup_uploader:
+    resource: .
+    type: uploader
+
 # Lantern Application Core bundle
 LanternAppBundle:
     resource: "@LanternAppBundle/Resources/config/routing.yml"

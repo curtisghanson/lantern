@@ -4,6 +4,7 @@
 {#}
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+{#}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script>
     if (!window.jQuery) {
@@ -17,6 +18,14 @@
         document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
     }
 </script>
+{#}
+{% javascripts
+    '@jquery_js'
+    '@jqueryui_js'
+    output='bundles/lanternapp/js/jquery-and-ui.min.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events -->
 <!-- BOOTSTRAP JS -->
@@ -45,6 +54,7 @@
     '@LanternAppBundle/Resources/public/js/plugin/bootstrap-slider/bootstrap-slider.min.js'
     '@LanternAppBundle/Resources/public/js/plugin/msie-fix/jquery.mb.browser.min.js'
     '@LanternAppBundle/Resources/public/js/plugin/fastclick/fastclick.js'
+    '@jqueryfileupload_js'
     output='bundles/lanternapp/js/lib.min.js'
 %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -148,6 +158,7 @@
 
         }
 
+{#}
         /*
         * RUN PAGE GRAPHS
         */
@@ -634,7 +645,7 @@
         $.chat_body.animate({
             scrollTop : $.chat_body[0].scrollHeight
         }, 500);
+{#}
 
     });
-
 </script>
